@@ -373,7 +373,14 @@
     <Compile Include="DataAccess\DataObjects\inzContext.cs" />
     <Compile Include="DataAccess\DataObjects\Kidsattitude.cs" />
     <Compile Include="DataAccess\DataObjects\Volunteer.cs" />
+    <Compile Include="Views\VolunteerList.xaml.cs">
+      <DependentUpon>VolunteerList.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VolunteerList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

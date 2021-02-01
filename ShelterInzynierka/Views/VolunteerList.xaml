@@ -1,0 +1,29 @@
+﻿<Window x:Class="ShelterInzynierka.Views.VolunteerList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShelterInzynierka.Views"
+        mc:Ignorable="d"
+        Title="Lista wszystkich wolontariuszy" MinHeight="500" MinWidth="800" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Margin="30 15 0 0">Kliknij dwa razy na komórkę, którą chcesz edytować i po wpisaniu nowej wartości naciśnij ENTER:</Label>
+        <DataGrid Grid.Row="2" Grid.ColumnSpan="3"></DataGrid>
+        <Button Grid.Row="4" Grid.Column="1" FontSize="16">Usuń wolontariusza z listy</Button>
+    </Grid>
+</Window>
