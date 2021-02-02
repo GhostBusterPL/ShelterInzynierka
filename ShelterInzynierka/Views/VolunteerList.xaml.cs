@@ -1,6 +1,9 @@
-﻿using ShelterInzynierka.DataAccess.DataObjects;
+﻿
+using ShelterInzynierka.Models.DB;
+using ShelterInzynierka.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +23,26 @@ namespace ShelterInzynierka.Views
     /// </summary>
     public partial class VolunteerList : Window
     {
+        private VolunteerViewModel viewModel = new VolunteerViewModel(); 
+        private ObservableCollection<Volunteer> volunteers; // ObserveableColletion for DataGrid
 
         public VolunteerList()
         {
             InitializeComponent();
+            volunteers = viewModel.GetVolunteers(); // load to OvservableColletion list from DB
+            dgVolunteers.ItemsSource = volunteers;
+
         }
+
+
+
+        // Deleting 1 or more volunteers
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            List<Volunteer> volunteersToDelete = dgVolunteers.SelectedItems.Cast<Volunteer>().ToList();
+            viewModel.DeleteVolunteer(volunteersToDelete, volunteers);        
+
+        }
+
     }
 }

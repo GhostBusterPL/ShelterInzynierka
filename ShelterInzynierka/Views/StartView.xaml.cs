@@ -23,5 +23,30 @@ namespace ShelterInzynierka.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click_Add_Adoption(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_View_Adoptions(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_Add_Volunteer(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new VolunteerAdd();
+            newWindow.Show();
+            Close();
+
+        }
+
+        private void Button_Click_View_Volunteers(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new VolunteerList();
+            newWindow.Show();
+            Close();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShelterInzynierka.DataAccess.DataObjects
+namespace ShelterInzynierka.Models.DB
 {
     public partial class Dogcolor
     {

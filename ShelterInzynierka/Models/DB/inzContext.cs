@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ShelterInzynierka.DataAccess.DataObjects
+namespace ShelterInzynierka.Models.DB
 {
     public partial class inzContext : DbContext
     {
@@ -31,7 +31,7 @@ namespace ShelterInzynierka.DataAccess.DataObjects
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("user id=root;persistsecurityinfo=True;server=127.0.0.1;database=inz;allowuservariables=True;password=root123");
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=root123;database=inz");
             }
         }
 
@@ -172,6 +172,10 @@ namespace ShelterInzynierka.DataAccess.DataObjects
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(300);
+
+                entity.Property(e => e.JoinDate).HasColumnType("date");
+
+                entity.Property(e => e.LeaveDate).HasColumnType("date");
 
                 entity.Property(e => e.Name)
                     .IsRequired()

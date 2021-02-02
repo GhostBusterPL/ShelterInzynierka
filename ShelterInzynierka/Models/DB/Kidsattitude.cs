@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShelterInzynierka.DataAccess.DataObjects
+namespace ShelterInzynierka.Models.DB
 {
-    public partial class Dogsattitude
+    public partial class Kidsattitude
     {
-        public Dogsattitude()
+        public Kidsattitude()
         {
             Dog = new HashSet<Dog>();
         }
 
-        public int IdDogsAttitude { get; set; }
+        public int IdKidsAttitude { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<Dog> Dog { get; set; }

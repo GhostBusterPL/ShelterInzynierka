@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShelterInzynierka.DataAccess.DataObjects
+namespace ShelterInzynierka.Models.DB
 {
     public partial class Dog
     {
@@ -23,6 +23,8 @@ namespace ShelterInzynierka.DataAccess.DataObjects
         public int IdDogsAttitude { get; set; }
         public string Sex { get; set; }
         public string Description { get; set; }
+        public DateTime JoinDate { get; set; }
+        public DateTime LeaveDate { get; set; }
 
         public virtual Catsattitude IdCatsAttitudeNavigation { get; set; }
         public virtual Dogsattitude IdDogsAttitudeNavigation { get; set; }

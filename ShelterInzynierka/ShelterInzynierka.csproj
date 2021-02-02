@@ -355,6 +355,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\DB\Adopter.cs" />
+    <Compile Include="Models\DB\Adoption.cs" />
+    <Compile Include="Models\DB\Adress.cs" />
+    <Compile Include="Models\DB\Catsattitude.cs" />
+    <Compile Include="Models\DB\Color.cs" />
+    <Compile Include="Models\DB\Dog.cs" />
+    <Compile Include="Models\DB\Dogcolor.cs" />
+    <Compile Include="Models\DB\Dogsattitude.cs" />
+    <Compile Include="Models\DB\inzContext.cs" />
+    <Compile Include="Models\DB\Kidsattitude.cs" />
+    <Compile Include="Models\DB\Volunteer.cs" />
+    <Compile Include="ViewModels\VolunteerViewModel.cs" />
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
@@ -362,21 +374,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataAccess\DataObjects\Adopter.cs" />
-    <Compile Include="DataAccess\DataObjects\Adoption.cs" />
-    <Compile Include="DataAccess\DataObjects\Adress.cs" />
-    <Compile Include="DataAccess\DataObjects\Catsattitude.cs" />
-    <Compile Include="DataAccess\DataObjects\Color.cs" />
-    <Compile Include="DataAccess\DataObjects\Dog.cs" />
-    <Compile Include="DataAccess\DataObjects\Dogcolor.cs" />
-    <Compile Include="DataAccess\DataObjects\Dogsattitude.cs" />
-    <Compile Include="DataAccess\DataObjects\inzContext.cs" />
-    <Compile Include="DataAccess\DataObjects\Kidsattitude.cs" />
-    <Compile Include="DataAccess\DataObjects\Volunteer.cs" />
+    <Compile Include="Views\VolunteerAdd.xaml.cs">
+      <DependentUpon>VolunteerAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VolunteerList.xaml.cs">
       <DependentUpon>VolunteerList.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VolunteerAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -412,9 +420,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
