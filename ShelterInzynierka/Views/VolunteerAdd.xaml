@@ -36,7 +36,7 @@
         <!-- Validations Labels with potential Errors-->
         <Label Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Left" Foreground="Red" FontWeight="Bold" Name="ErrorName"></Label>
         <Label Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Left" Foreground="Red" FontWeight="Bold" Name="ErrorSurname"></Label>
-        <Label Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Left" Foreground="Red" FontWeight="Bold" Name="ErrorAge"></Label>
+        <Label Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Left" Foreground="Red" FontWeight="Bold" Name="ErrorPhoneNumber"></Label>
 
         <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Margin="15" Name="TextBoxName"></TextBox>
         <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Margin="15" Name="TextBoxSurname"></TextBox>

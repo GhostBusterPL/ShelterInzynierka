@@ -32,6 +32,13 @@ namespace ShelterInzynierka.ViewModels
             return volunteers;
         }
 
+        // Method: Add new Volunteer to DB
+        public void AddNewVolunteer (Volunteer newVolunteer)
+        {
+            _context.Add(newVolunteer);
+            _context.SaveChanges();
+            MessageBox.Show($"Poprawnie dodałem wolontariusza: \n {newVolunteer.Name} {newVolunteer.Surname}");
+        }
 
         // Method: Deleting 1 or more Volonteers
         public bool DeleteVolunteer(List<Volunteer> volunteersToDelete, ObservableCollection<Volunteer> volunteers)

@@ -29,16 +29,16 @@ namespace ShelterInzynierka.Validations
 
         static public Boolean isNumberWithoutZero (String property)
         {
-            if(property.Length == 1)
-            {
-                int number = Int32.Parse(property);
-                if(number == 0)
-                {
-                    return false;
-                } 
-            } 
             if (property.All(char.IsDigit))
             {
+                if (property.Length == 1)
+                {
+                    int number = Int32.Parse(property);
+                    if (number == 0)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
             return false;
