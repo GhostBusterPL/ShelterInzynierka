@@ -14,7 +14,7 @@ namespace ShelterInzynierka.Models.DB
         public int IdDog { get; set; }
         public string ChipNumber { get; set; }
         public string Name { get; set; }
-        public int? Age { get; set; }
+        public DateTime? BornDate { get; set; }
         public int Weight { get; set; }
         public int Height { get; set; }
         public bool? HaveCastration { get; set; }

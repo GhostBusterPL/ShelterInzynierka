@@ -31,7 +31,7 @@ namespace ShelterInzynierka.Models.DB
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=root123;database=inz");
+                optionsBuilder.UseMySQL("user id=root;password=root123;persistsecurityinfo=True;server=127.0.0.1;database=inz;allowuservariables=True");
             }
         }
 
@@ -165,6 +165,8 @@ namespace ShelterInzynierka.Models.DB
                 entity.HasIndex(e => e.IdKidsAttitude)
                     .HasName("Dog_KidsAttitude");
 
+                entity.Property(e => e.BornDate).HasColumnType("date");
+
                 entity.Property(e => e.ChipNumber)
                     .IsRequired()
                     .HasMaxLength(15);
@@ -265,6 +267,10 @@ namespace ShelterInzynierka.Models.DB
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32);
+
+                entity.Property(e => e.PhoneNumber)
+                    .IsRequired()
+                    .HasMaxLength(15);
 
                 entity.Property(e => e.Surname)
                     .IsRequired()
