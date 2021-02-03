@@ -39,7 +39,6 @@ namespace ShelterInzynierka.Views
             var newWindow = new VolunteerAdd();
             newWindow.Show();
             Close();
-
         }
 
         private void Button_Click_View_Volunteers(object sender, RoutedEventArgs e)

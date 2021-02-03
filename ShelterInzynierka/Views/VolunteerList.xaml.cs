@@ -37,12 +37,18 @@ namespace ShelterInzynierka.Views
 
 
         // Deleting 1 or more volunteers
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
             List<Volunteer> volunteersToDelete = dgVolunteers.SelectedItems.Cast<Volunteer>().ToList();
             viewModel.DeleteVolunteer(volunteersToDelete, volunteers);        
 
         }
 
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new StartView();
+            newWindow.Show();
+            Close();
+        }
     }
 }

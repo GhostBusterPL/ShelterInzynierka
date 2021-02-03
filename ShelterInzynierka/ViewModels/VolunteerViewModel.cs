@@ -44,7 +44,7 @@ namespace ShelterInzynierka.ViewModels
                 volunteers.Remove(volunteerToDelete);
                 MessageBox.Show("Usunięto wolontariusza: " + volunteerToDelete.Name + " " + volunteerToDelete.Surname);
             }
-            else 
+            else if (volunteersToDelete.Count > 1)
             {
                 String deletedVolunteersNames = ""; // for storage name + surname each deleted Volunteer
 

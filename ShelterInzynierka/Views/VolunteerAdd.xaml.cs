@@ -23,5 +23,15 @@ namespace ShelterInzynierka.Views
         {
             InitializeComponent();
         }
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Button_Click_Back (object sender, RoutedEventArgs e)
+        {
+            var newWindow = new StartView();
+            newWindow.Show();
+            Close();
+        }
     }
 }

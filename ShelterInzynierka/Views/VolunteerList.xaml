@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
         mc:Ignorable="d"
-        Title="Lista wszystkich wolontariuszy" MinHeight="500" MinWidth="800" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="Lista wszystkich wolontariuszy" MinHeight="500" MinWidth="600" Height="500" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -22,17 +22,19 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Margin="30 10 0 0">Kliknij dwa razy na komórkę, którą chcesz edytować i po wpisaniu nowej wartości naciśnij ENTER:</Label>
+        <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Margin="0 10 0 0" HorizontalAlignment="Center">Kliknij na wiersz, a następnie Edytuj bądź Usuń go:</Label>
         
-        <DataGrid Grid.Row="2" Grid.ColumnSpan="3" Margin="100 0 100 0" AutoGenerateColumns="False" Name="dgVolunteers" 
+        <DataGrid Grid.Row="2" Grid.ColumnSpan="3" Margin="100 0 100 0" AutoGenerateColumns="False" Name="dgVolunteers"
                   AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Imię" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Nazwisko" Binding="{Binding Path=Surname}"/>
-                <DataGridTextColumn Header="Wiek" Binding="{Binding Path=Age}"/>
+                <DataGridTextColumn Width="*" Header="Imię" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="*" Header="Nazwisko" Binding="{Binding Path=Surname}"/>
+                <DataGridTextColumn Width="0.35*" Header="Wiek" Binding="{Binding Path=Age}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-        <Button Grid.Row="4" Grid.Column="1" FontSize="16" Click="btnDelete_Click">Usuń wolontariusza z listy</Button>
+
+        <Button Grid.Row="4" Grid.Column="0" FontSize="16" Click="Button_Click_Delete" Margin="35 10 35 10">Edytuj</Button>
+        <Button Grid.Row="4" Grid.Column="1" FontSize="16" Click="Button_Click_Delete" Margin="35 10 35 10">Usuń</Button>
+        <Button Grid.Row="4" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="100 10 0 10">Powrót</Button>
     </Grid>
 </Window>
