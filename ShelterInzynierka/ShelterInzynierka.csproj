@@ -373,6 +373,9 @@
     <Compile Include="Views\AdopterList.xaml.cs">
       <DependentUpon>AdopterList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DogAdd.xaml.cs">
+      <DependentUpon>DogAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DogList.xaml.cs">
       <DependentUpon>DogList.xaml</DependentUpon>
     </Compile>
@@ -394,6 +397,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdopterList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DogAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

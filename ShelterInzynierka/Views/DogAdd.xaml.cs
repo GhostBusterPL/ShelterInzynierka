@@ -15,21 +15,16 @@ using System.Windows.Shapes;
 namespace ShelterInzynierka.Views
 {
     /// <summary>
-    /// Interaction logic for DogList.xaml
+    /// Interaction logic for DogAdd.xaml
     /// </summary>
-    public partial class DogList : Window
+    public partial class DogAdd : Window
     {
-        public DogList()
+        public DogAdd()
         {
             InitializeComponent();
         }
 
-        private void Button_Click_Delete(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
 
         }
