@@ -27,11 +27,12 @@
         <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20">Osoby:</Label>
         <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20">Adopcje:</Label>
 
-        <Button Grid.Column="0" Grid.Row="1" Margin="20" FontSize="18">Dodaj nowego psa</Button>
-        <Button Grid.Column="0" Grid.Row="2" Margin="20" FontSize="18">Wyświetl wszystkie psy</Button>
+        <Button Grid.Column="0" Grid.Row="1" Margin="20" FontSize="18" Click="Button_Click_Add_Dog">Dodaj nowego psa</Button>
+        <Button Grid.Column="0" Grid.Row="2" Margin="20" FontSize="18" Click="Button_Click_View_Dogs">Wyświetl wszystkie psy</Button>
 
-        <Button Grid.Column="1" Grid.Row="1" Margin="20" FontSize="14">Wprowadź nowego adoptującego</Button>
-        <Button Grid.Column="1" Grid.Row="2" Margin="20" FontSize="14">Wyświetl wszystkich adoptujących</Button>
+        <Button Grid.Column="1" Grid.Row="1" Margin="20" FontSize="14" Click="Button_Click_Add_Adopter">Wprowadź nowego adoptującego</Button>
+        <Button Grid.Column="1" Grid.Row="2" Margin="20" FontSize="14" Click="Button_Click_View_Adopters">Wyświetl wszystkich adoptujących</Button>
+        
         <Button Grid.Column="1" Grid.Row="3" Margin="20" FontSize="14" Click="Button_Click_Add_Volunteer">Wprowadź nowego wolonatriusza</Button>
         <Button Grid.Column="1" Grid.Row="4" Margin="20" FontSize="14" Click="Button_Click_View_Volunteers">Wyświetl wszystkich wolontariuszy</Button>
 

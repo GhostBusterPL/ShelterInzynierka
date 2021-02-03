@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShelterInzynierka.Models.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,35 @@ namespace ShelterInzynierka.Views
         private void Button_Click_View_Volunteers(object sender, RoutedEventArgs e)
         {
             var newWindow = new VolunteerList();
+            newWindow.Show();
+            Close();
+        }
+
+
+        private void Button_Click_Add_Dog(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new DogAdd();
+            newWindow.Show();
+            Close();
+        }
+
+        private void Button_Click_View_Dogs(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new DogList();
+            newWindow.Show();
+            Close();
+        }
+
+        private void Button_Click_Add_Adopter(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new AdopterAdd();
+            newWindow.Show();
+            Close();
+        }
+
+        private void Button_Click_View_Adopters(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new AdopterList();
             newWindow.Show();
             Close();
         }

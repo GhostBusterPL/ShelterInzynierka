@@ -33,7 +33,7 @@ namespace ShelterInzynierka.Views
         {
             var newWindow = new StartView();
             Close();
-            newWindow.Close();
+            newWindow.Show();
         }
     }
 }
