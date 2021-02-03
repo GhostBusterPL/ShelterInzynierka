@@ -367,8 +367,14 @@
     <Compile Include="Models\DB\Kidsattitude.cs" />
     <Compile Include="Models\DB\Volunteer.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
+    <Compile Include="Views\AdopterAdd.xaml.cs">
+      <DependentUpon>AdopterAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdopterList.xaml.cs">
       <DependentUpon>AdopterList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DogList.xaml.cs">
+      <DependentUpon>DogList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
@@ -383,7 +389,15 @@
     <Compile Include="Views\VolunteerList.xaml.cs">
       <DependentUpon>VolunteerList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AdopterAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdopterList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DogList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

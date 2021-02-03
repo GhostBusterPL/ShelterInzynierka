@@ -1,0 +1,47 @@
+﻿<Window x:Class="ShelterInzynierka.Views.DogList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShelterInzynierka.Views"
+        mc:Ignorable="d"
+        Title="Lista wszystkich psów w schronisku" MinHeight="500" MinWidth="800" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Kliknij na wiersz, a następnie Edytuj bądź Usuń go.</Label>
+        <Label Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Podwójne kliknięcie spowoduje wyświetlenie szczegółowych informacji o psie.</Label>
+
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" Name="dgVolunteers"
+                  AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Imię psa" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="*" Header="Nr chipu" Binding="{Binding Path=ChipNumber}"/>
+                <DataGridTextColumn Width="0.5*" Header="Płeć" Binding="{Binding Path=Sex}"/>
+                <DataGridTextColumn Width="0.5*" Header="Wiek" Binding="{Binding Path=Age}"/>
+                <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate}"/>
+                <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate}"/>
+                <DataGridTextColumn Width="0.5*" Header="Waga" Binding="{Binding Path=Weight}"/>
+                <DataGridTextColumn Width="0.8*" Header="Czy kastrowany" Binding="{Binding Path=HaveCastration}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="5" Grid.Column="0" FontSize="16" Click="Button_Click_Delete" Margin="35 10 35 10">Usuń</Button>
+        <Button Grid.Row="5" Grid.Column="1" FontSize="16" Click="Button_Click_Edit" Margin="35 10 35 10">Edytuj</Button>
+        <Button Grid.Row="5" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="35 10 35 10">Powrót</Button>
+    </Grid>
+</Window>
