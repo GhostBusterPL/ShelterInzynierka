@@ -20,7 +20,7 @@ namespace ShelterInzynierka.Models.DB
         public virtual ICollection<Adoption> Adoption { get; set; }
 
         #region IdataErrorInfo
-        string IDataErrorInfo.Error
+        public string Error
         {
             get
             {
@@ -29,11 +29,25 @@ namespace ShelterInzynierka.Models.DB
         }
 
 
-        string IDataErrorInfo.this[string propertyName]
+        public string this[string propertyName]
         {
             get
             {
-                return GetValidationError(propertyName);
+                string result = String.Empty;
+                switch (propertyName)
+                {
+                    case "Name":
+                        if (string.IsNullOrWhiteSpace(Name))
+                            result = "Podanie imienia jest wymagane!";
+                        break;
+
+                    case "Surname":
+                        if (string.IsNullOrWhiteSpace(Surname))
+                            result = "Podanie nazwiska jest wymagane!";
+                        break;
+
+                }
+                return result;
             }
         }
         #endregion

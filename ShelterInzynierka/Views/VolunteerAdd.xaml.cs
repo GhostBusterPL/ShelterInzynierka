@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShelterInzynierka.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,49 @@ namespace ShelterInzynierka.Views
         }
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
+            // Validate
+            string name = TextBoxName.Text;
+            string surname = TextBoxSurname.Text;
+            string age = TextBoxAge.Text;
+
+
+            if (ValidationRules.isNull(name))
+            {
+                ErrorName.Content = "Imię jest wymagane!";
+            } 
+            else
+            {
+                ErrorName.Content = "";
+            }
+
+            if (ValidationRules.isNull(surname))
+            {
+                ErrorSurname.Content = "Nazwisko jest wymagane!";
+            }
+            else
+            {
+                ErrorSurname.Content = "";
+            }
+
+            if (ValidationRules.isNull(age))
+            {
+                ErrorAge.Content = "Wiek jest wymagany!";
+            }
+            else
+            {
+                if (!ValidationRules.isNumber(age))
+                {
+                    ErrorAge.Content = "Wiek musi być liczbą";
+                }
+                else
+                {
+                    ErrorAge.Content = "";
+                }
+            }
+
+
+
+
 
         }
         private void Button_Click_Back (object sender, RoutedEventArgs e)
