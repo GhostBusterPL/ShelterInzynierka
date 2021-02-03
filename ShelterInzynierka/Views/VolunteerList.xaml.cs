@@ -33,7 +33,11 @@ namespace ShelterInzynierka.Views
             dgVolunteers.ItemsSource = volunteers;
 
         }
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
 
+
+        }
 
 
         // Deleting 1 or more volunteers
@@ -44,6 +48,7 @@ namespace ShelterInzynierka.Views
 
         }
 
+        // Back to Main Window
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             var newWindow = new StartView();
