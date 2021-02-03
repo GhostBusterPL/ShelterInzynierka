@@ -9,7 +9,8 @@ namespace ShelterInzynierka.Validations
 {
     public class ValidationRules
     {
-        static public Boolean isNull (String property) {
+        static public Boolean isNull (String property) 
+        {
             if (String.IsNullOrWhiteSpace(property))
             {
                 return true;
@@ -17,16 +18,52 @@ namespace ShelterInzynierka.Validations
             return false;
         }
 
-        static public Boolean isNumber (String property)
+        static public Boolean isLetters (String property)
         {
-            if (property.All(char.IsDigit)) {
+            if(property.All(char.IsLetter))
+            {
                 return true;
             }
             return false;
         }
-        static public Boolean isAgeOk (String property, int maxAge)
+
+        static public Boolean isNumberWithoutZero (String property)
         {
-            if(Int32.Parse(property) <= maxAge)
+            if(property.Length == 1)
+            {
+                int number = Int32.Parse(property);
+                if(number == 0)
+                {
+                    return false;
+                } 
+            } 
+            if (property.All(char.IsDigit))
+            {
+                return true;
+            }
+            return false;
+        }
+        static public Boolean isOverMaxNumber (String property, int maxNumber)
+        {
+            isOverMaxLength(property, 2);
+            int number = Int32.Parse(property);
+            if ( number <= maxNumber)
+            {
+                return true;
+            }
+            return false;
+        }
+        static public Boolean isOverMaxLength(String property, int maxLenght) 
+        {
+            if (property.Length >= maxLenght)
+            {
+                return true;
+            }
+            return false;
+        }
+        static public Boolean isOverMinLength(String property, int minLenght)
+        {
+            if (property.Length >= minLenght)
             {
                 return true;
             }

@@ -1,4 +1,5 @@
-﻿using ShelterInzynierka.Models.DB;
+﻿
+using ShelterInzynierka.Models.DB;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace ShelterInzynierka.ViewModels
             {
                 String deletedVolunteersNames = ""; // for storage name + surname each deleted Volunteer
 
-                foreach(Volunteer volunteer in volunteersToDelete)
+                foreach (Volunteer volunteer in volunteersToDelete)
                 {
                     _context.Volunteer.RemoveRange(volunteer);
                     _context.SaveChanges();
