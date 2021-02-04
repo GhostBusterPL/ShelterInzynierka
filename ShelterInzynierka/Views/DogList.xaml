@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ShelterInzynierka.Views"
+        xmlns:local="clr-namespace:ShelterInzynierka.Views" 
         mc:Ignorable="d"
         Title="Lista wszystkich psów w schronisku" MinHeight="500" MinWidth="800" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -26,7 +27,7 @@
         <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Kliknij na wiersz, a następnie Edytuj bądź Usuń go.</Label>
         <Label Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Podwójne kliknięcie spowoduje wyświetlenie szczegółowych informacji o psie.</Label>
 
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" Name="dgVolunteers"
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" Name="dgDogs"
                   AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Imię psa" Binding="{Binding Path=Name}"/>
@@ -36,7 +37,8 @@
                 <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate}"/>
                 <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate}"/>
                 <DataGridTextColumn Width="0.5*" Header="Waga" Binding="{Binding Path=Weight}"/>
-                <DataGridTextColumn Width="0.8*" Header="Czy kastrowany" Binding="{Binding Path=HaveCastration}"/>
+                <DataGridTextColumn Width="0.8*" Header="Czy kastrowany" 
+                                    Binding="{Binding Path=HaveCastration, Converter={StaticResource HaveCastrationConverterKey}}"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ShelterInzynierka"
+             xmlns:super="clr-namespace:ShelterInzynierka.ValueConverters"
              StartupUri="Views/StartView.xaml">
     <Application.Resources>
-         
+        <super:HaveCastrationConverter x:Key="HaveCastrationConverterKey"/>
     </Application.Resources>
 </Application>

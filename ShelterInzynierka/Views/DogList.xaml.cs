@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ShelterInzynierka.Models.DB;
+using ShelterInzynierka.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,13 @@ namespace ShelterInzynierka.Views
     /// </summary>
     public partial class DogList : Window
     {
+        private DogViewModel viewModel = new DogViewModel();
+        private ObservableCollection<Dog> dogs; // ObserveableColletion for DataGrid
         public DogList()
         {
             InitializeComponent();
+            dogs = viewModel.GetDogs(); // load to OvservableColletion list from DB
+            dgDogs.ItemsSource = dogs;
         }
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)

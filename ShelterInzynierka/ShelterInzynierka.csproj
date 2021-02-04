@@ -367,6 +367,8 @@
     <Compile Include="Models\DB\Kidsattitude.cs" />
     <Compile Include="Models\DB\Volunteer.cs" />
     <Compile Include="Validations\ValidationRules.cs" />
+    <Compile Include="ValueConverters\HaveCastrationConverter.cs" />
+    <Compile Include="ViewModels\DogViewModel.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
     <Compile Include="Views\AdopterAdd.xaml.cs">
       <DependentUpon>AdopterAdd.xaml</DependentUpon>

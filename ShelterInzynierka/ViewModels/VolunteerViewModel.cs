@@ -58,7 +58,7 @@ namespace ShelterInzynierka.ViewModels
 
                 foreach (Volunteer volunteer in volunteersToDelete)
                 {
-                    _context.Volunteer.RemoveRange(volunteer);
+                    _context.Volunteer.Remove(volunteer);
                     _context.SaveChanges();
                     deletedVolunteersNames += volunteer.Name + " " + volunteer.Surname + "\n";
                     volunteers.Remove(volunteer);
