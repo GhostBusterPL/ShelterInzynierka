@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ShelterInzynierka.Models.DB
 {
@@ -12,12 +13,44 @@ namespace ShelterInzynierka.Models.DB
         }
 
         public int IdVolunteer { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string PhoneNumber { get; set; }
+        private string name;
+        public string Name 
+        {  
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged();
+            }
+        }
+        private string surname;
+        public string Surname
+        {
+            get { return surname; }
+            set
+            {
+                surname = value;
+                OnPropertyChanged();
+            }
+        }
+        private string phoneNumber;
+        public string PhoneNumber 
+        {
+            get { return phoneNumber; }
+            set
+            {
+                phoneNumber = value;
+                OnPropertyChanged();
+            }
+        }
 
         public virtual ICollection<Adoption> Adoption { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }
