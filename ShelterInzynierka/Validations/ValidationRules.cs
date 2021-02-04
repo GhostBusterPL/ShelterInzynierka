@@ -45,7 +45,6 @@ namespace ShelterInzynierka.Validations
         }
         static public Boolean isOverMaxNumber (String property, int maxNumber)
         {
-            isOverMaxLength(property, 2);
             int number = Int32.Parse(property);
             if ( number <= maxNumber)
             {

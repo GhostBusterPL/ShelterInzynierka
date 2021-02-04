@@ -19,7 +19,7 @@ namespace ShelterInzynierka.ViewModels
             var dogs = new ObservableCollection<Dog>(_context.Dog.ToList());
             return dogs;
         }
-        public bool DeleteVolunteer(List<Dog> dogsToDelete, ObservableCollection<Dog> dogs)
+        public bool DeleteDogs(List<Dog> dogsToDelete, ObservableCollection<Dog> dogs)
         {
             if (dogsToDelete.Count == 1)
             {
@@ -28,7 +28,7 @@ namespace ShelterInzynierka.ViewModels
                 _context.Dog.Remove(dogTodelete);
                 _context.SaveChanges();
                 dogs.Remove(dogTodelete);
-                MessageBox.Show("Usunięto wolontariusza:\n" + dogTodelete.Name + " " + dogTodelete.ChipNumber);
+                MessageBox.Show("Usunięto psa:\n" + dogTodelete.Name + " " + dogTodelete.ChipNumber);
             }
             else if (dogsToDelete.Count > 1)
             {

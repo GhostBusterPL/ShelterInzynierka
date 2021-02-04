@@ -31,9 +31,11 @@ namespace ShelterInzynierka.Views
             dgDogs.ItemsSource = dogs;
         }
 
+        // Deleting 1 or more Dogs
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
-
+            List<Dog> dogsToDelete = dgDogs.SelectedItems.Cast<Dog>().ToList();
+            viewModel.DeleteDogs(dogsToDelete, dogs);
         }
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)

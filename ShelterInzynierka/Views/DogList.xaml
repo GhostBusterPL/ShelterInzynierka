@@ -37,7 +37,7 @@
                 <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate}"/>
                 <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate}"/>
                 <DataGridTextColumn Width="0.5*" Header="Waga" Binding="{Binding Path=Weight}"/>
-                <DataGridTextColumn Width="0.8*" Header="Czy kastrowany" 
+                <DataGridTextColumn Width="0.6*" Header="Kastracja" 
                                     Binding="{Binding Path=HaveCastration, Converter={StaticResource HaveCastrationConverterKey}}"/>
             </DataGrid.Columns>
         </DataGrid>
