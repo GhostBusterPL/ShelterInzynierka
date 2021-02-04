@@ -35,8 +35,9 @@ namespace ShelterInzynierka.Views
         }
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
-
-
+            var volunteerToEdit = (Volunteer)dgVolunteers.SelectedItem;
+            var editWindow = new VolunteerEdit(volunteerToEdit, volunteers);
+            editWindow.Show();
         }
 
 

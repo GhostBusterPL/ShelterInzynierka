@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ShelterInzynierka.Models.DB
 {
-    public partial class Volunteer
+    public partial class Volunteer : INotifyPropertyChanged
     {
         public Volunteer()
         {
@@ -16,5 +17,7 @@ namespace ShelterInzynierka.Models.DB
         public string PhoneNumber { get; set; }
 
         public virtual ICollection<Adoption> Adoption { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -37,7 +37,7 @@ namespace ShelterInzynierka.ViewModels
         {
             _context.Add(newVolunteer);
             _context.SaveChanges();
-            MessageBox.Show($"Poprawnie dodałem wolontariusza: \n {newVolunteer.Name} {newVolunteer.Surname}");
+            MessageBox.Show($"Poprawnie dodałem wolontariusza: \n{newVolunteer.Name} {newVolunteer.Surname}");
         }
 
         // Method: Deleting 1 or more Volonteers
@@ -50,7 +50,7 @@ namespace ShelterInzynierka.ViewModels
                 _context.Volunteer.Remove(volunteerToDelete);
                 _context.SaveChanges();
                 volunteers.Remove(volunteerToDelete);
-                MessageBox.Show("Usunięto wolontariusza: " + volunteerToDelete.Name + " " + volunteerToDelete.Surname);
+                MessageBox.Show("Usunięto wolontariusza:\n" + volunteerToDelete.Name + " " + volunteerToDelete.Surname);
             }
             else if (volunteersToDelete.Count > 1)
             {
@@ -69,6 +69,24 @@ namespace ShelterInzynierka.ViewModels
             return false;
         }
 
+        internal void EditVolunteer(Volunteer newVolunteer, ObservableCollection<Volunteer> volunteers)
+        {
+            // Find the same object in DB
+            var userFromDb = _context.Volunteer.FirstOrDefault(x => x.IdVolunteer == newVolunteer.IdVolunteer);
+            var userFromView = volunteers.FirstOrDefault(x => x.IdVolunteer == newVolunteer.IdVolunteer);
 
+            // change properties in DB object
+            userFromDb.Name = newVolunteer.Name;
+            userFromDb.Surname = newVolunteer.Surname;
+            userFromDb.PhoneNumber = newVolunteer.PhoneNumber;
+
+            // change properties in ObservableColletion for View
+            userFromView.Name = newVolunteer.Name;
+            userFromView.Surname = newVolunteer.Surname;
+            userFromView.PhoneNumber = newVolunteer.PhoneNumber;
+
+            _context.SaveChanges();
+            MessageBox.Show("Pomyślnie zmieniłem dane.");
+        }
     }
 }

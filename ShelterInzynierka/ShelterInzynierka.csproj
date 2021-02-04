@@ -390,6 +390,9 @@
     <Compile Include="Views\VolunteerAdd.xaml.cs">
       <DependentUpon>VolunteerAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VolunteerEdit.xaml.cs">
+      <DependentUpon>VolunteerEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VolunteerList.xaml.cs">
       <DependentUpon>VolunteerList.xaml</DependentUpon>
     </Compile>
@@ -414,6 +417,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\VolunteerAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VolunteerEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
