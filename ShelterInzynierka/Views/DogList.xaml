@@ -33,7 +33,8 @@
                 <DataGridTextColumn Width="*" Header="Imię psa" Binding="{Binding Path=Name}"/>
                 <DataGridTextColumn Width="*" Header="Nr chipu" Binding="{Binding Path=ChipNumber}"/>
                 <DataGridTextColumn Width="0.5*" Header="Płeć" Binding="{Binding Path=Sex}"/>
-                <DataGridTextColumn Width="0.5*" Header="Wiek" Binding="{Binding Path=Age}"/>
+                <DataGridTextColumn Width="0.5*" Header="Wiek" 
+                                    Binding="{Binding Path=BornDate, Converter={StaticResource DateToAgeConverterKey}}"/>
                 <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate}"/>
                 <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate}"/>
                 <DataGridTextColumn Width="0.5*" Header="Waga" Binding="{Binding Path=Weight}"/>

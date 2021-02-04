@@ -6,5 +6,6 @@
              StartupUri="Views/StartView.xaml">
     <Application.Resources>
         <super:HaveCastrationConverter x:Key="HaveCastrationConverterKey"/>
+        <super:DateToAgeConverter x:Key="DateToAgeConverterKey"/>
     </Application.Resources>
 </Application>
