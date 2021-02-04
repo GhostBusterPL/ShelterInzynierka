@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
         mc:Ignorable="d"
-        Title="Dodaj nowego wolontariusza" MinHeight="500" MinWidth="500" Height="500" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="Zmiana danych wolontariusza" MinHeight="500" MinWidth="500" Height="500" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
 
         <Grid.ColumnDefinitions>

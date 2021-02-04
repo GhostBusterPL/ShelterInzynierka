@@ -1,4 +1,5 @@
-﻿using ShelterInzynierka.Validations;
+﻿using ShelterInzynierka.Models.DB;
+using ShelterInzynierka.Validations;
 using ShelterInzynierka.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,8 @@ namespace ShelterInzynierka.Views
             ComboBoxCats.DisplayMemberPath = "Name";
             ComboBoxKids.ItemsSource = viewModel.GetAttitudesKids();
             ComboBoxKids.DisplayMemberPath = "Name";
+
+            DatePickerBornDate.Value = DateTime.Today;
         }
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
@@ -40,12 +43,52 @@ namespace ShelterInzynierka.Views
             string name = TextBoxName.Text;
             string chipNumber = TextBoxChipNumber.Text;
 
+            // dog to add to DB
+            Dog dogToAdd = new Dog();
+
             Boolean flagName = nameValidation(name);
             Boolean flagChipNumber = chipNumberValidation(chipNumber);
 
             if (flagName == true && flagChipNumber == true)
             {
+                // Setting SEX 
+                var whichSex = radioButtonsPanel.Children.OfType<RadioButton>()
+                 .FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value);
+                if (whichSex == RadioButtonMale)
+                    dogToAdd.Sex = "M";
+                else
+                    dogToAdd.Sex = "K";
 
+                // Setting BornDate, JoinDate, LeaveDate
+                dogToAdd.BornDate = DatePickerBornDate.Value;
+                dogToAdd.JoinDate = DateTime.Today;
+
+                // Setting Name, ChipNumber, Description
+                dogToAdd.Name = TextBoxName.Text;
+                dogToAdd.ChipNumber = TextBoxChipNumber.Text;
+                dogToAdd.Description = TextBoxDescription.Text;
+
+                // Setting 3x Attitudes
+                Catsattitude catsattitude = (Catsattitude)ComboBoxCats.SelectedItem;
+                dogToAdd.IdCatsAttitude = catsattitude.IdCatsAttitude;
+                Dogsattitude dogssattitude = (Dogsattitude)ComboBoxDogs.SelectedItem;
+                dogToAdd.IdDogsAttitude = dogssattitude.IdDogsAttitude;
+                Kidsattitude kidsattitude = (Kidsattitude)ComboBoxKids.SelectedItem;
+                dogToAdd.IdKidsAttitude = kidsattitude.IdKidsAttitude;
+
+                // Setting Weight and Height
+                dogToAdd.Weight = (Double)DoubleUpDownWeight.Value;
+                dogToAdd.Height = (int)DoubleUpDownHeight.Value;
+
+                // Setting Have Castration
+                dogToAdd.HaveCastration = CheckBoxCastration.IsChecked;
+
+                // pass to viewmodel
+                viewModel.AddNewDog(dogToAdd);
+
+                var newWindow = new StartView(); 
+                Close();
+                newWindow.Show();
             }
         }
 

@@ -384,6 +384,7 @@
     <Compile Include="Validations\ValidationRules.cs" />
     <Compile Include="ValueConverters\DateToAgeConverter.cs" />
     <Compile Include="ValueConverters\HaveCastrationConverter.cs" />
+    <Compile Include="ValueConverters\OnlyYearMonthDay.cs" />
     <Compile Include="ViewModels\DogViewModel.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
     <Compile Include="Views\AdopterAdd.xaml.cs">
@@ -394,6 +395,9 @@
     </Compile>
     <Compile Include="Views\DogAdd.xaml.cs">
       <DependentUpon>DogAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DogEdit.xaml.cs">
+      <DependentUpon>DogEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DogList.xaml.cs">
       <DependentUpon>DogList.xaml</DependentUpon>
@@ -423,6 +427,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DogAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DogEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,12 +1,11 @@
-﻿<Window x:Class="ShelterInzynierka.Views.DogAdd"
+﻿<Window x:Class="ShelterInzynierka.Views.DogEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ShelterInzynierka.Views" 
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:ShelterInzynierka.Views" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-      Title="Dodaj nowego psa" MinHeight="500" MinWidth="900" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+      Title="Zmiana danych wolontariusza" MinHeight="500" MinWidth="900" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
@@ -83,7 +82,7 @@
         <ComboBox Grid.Column="5" Grid.Row="3" Name="ComboBoxDogs" SelectedIndex="0"></ComboBox>
         <ComboBox Grid.Column="5" Grid.Row="4" Name="ComboBoxCats" Margin="0 13 0 13" SelectedIndex="0"></ComboBox>
         <ComboBox Grid.Column="5" Grid.Row="5" Name="ComboBoxKids" SelectedIndex="0"></ComboBox>
-        
+
         <!--Control window buttons-->
         <Button Grid.Column="4" Grid.Row="7" Margin="10" FontSize="16" Click="Button_Click_Save">Zapisz</Button>
         <Button Grid.Column="5" Grid.Row="7" Margin="10" FontSize="16" Click="Button_Click_Back">Powrót</Button>

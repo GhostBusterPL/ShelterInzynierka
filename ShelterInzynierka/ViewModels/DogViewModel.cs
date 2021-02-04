@@ -59,5 +59,12 @@ namespace ShelterInzynierka.ViewModels
             }
             return false;
         }
+
+        internal void AddNewDog(Dog dogToAdd)
+        {
+            _context.Add(dogToAdd);
+            _context.SaveChanges();
+            MessageBox.Show($"Poprawnie dodałem psa: \n{dogToAdd.Name} {dogToAdd.ChipNumber}");
+        }
     }
 }

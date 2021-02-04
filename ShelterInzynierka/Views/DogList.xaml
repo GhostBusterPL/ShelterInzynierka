@@ -35,8 +35,8 @@
                 <DataGridTextColumn Width="0.5*" Header="Płeć" Binding="{Binding Path=Sex}"/>
                 <DataGridTextColumn Width="0.5*" Header="Wiek" 
                                     Binding="{Binding Path=BornDate, Converter={StaticResource DateToAgeConverterKey}}"/>
-                <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate}"/>
-                <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate}"/>
+                <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
+                <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
                 <DataGridTextColumn Width="0.5*" Header="Waga" Binding="{Binding Path=Weight}"/>
                 <DataGridTextColumn Width="0.6*" Header="Kastracja" 
                                     Binding="{Binding Path=HaveCastration, Converter={StaticResource HaveCastrationConverterKey}}"/>

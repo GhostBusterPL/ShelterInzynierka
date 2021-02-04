@@ -7,5 +7,6 @@
     <Application.Resources>
         <super:HaveCastrationConverter x:Key="HaveCastrationConverterKey"/>
         <super:DateToAgeConverter x:Key="DateToAgeConverterKey"/>
+        <super:OnlyYearMonthDay x:Key="OnlyYearMonthDayKey"/>
     </Application.Resources>
 </Application>

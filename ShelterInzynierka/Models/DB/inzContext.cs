@@ -165,19 +165,20 @@ namespace ShelterInzynierka.Models.DB
                 entity.HasIndex(e => e.IdKidsAttitude)
                     .HasName("Dog_KidsAttitude");
 
-                entity.Property(e => e.BornDate).HasColumnType("date");
+                entity.Property(e => e.BornDate).HasColumnType("date")
+                    .IsRequired();
 
                 entity.Property(e => e.ChipNumber)
                     .IsRequired()
                     .HasMaxLength(15);
 
                 entity.Property(e => e.Description)
-                    .IsRequired()
                     .HasMaxLength(300);
 
                 entity.Property(e => e.JoinDate).HasColumnType("date");
 
                 entity.Property(e => e.LeaveDate).HasColumnType("date");
+
 
                 entity.Property(e => e.Name)
                     .IsRequired()

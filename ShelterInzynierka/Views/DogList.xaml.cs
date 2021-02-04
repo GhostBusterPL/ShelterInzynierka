@@ -40,7 +40,9 @@ namespace ShelterInzynierka.Views
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
-
+            var dogToEdit = (Dog)dgDogs.SelectedItem;
+            var editWindow = new DogEdit(dogToEdit, dogs);
+            editWindow.Show();
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
