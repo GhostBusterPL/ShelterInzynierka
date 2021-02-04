@@ -1,5 +1,6 @@
 ﻿using ShelterInzynierka.Models.DB;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -19,18 +20,19 @@ namespace ShelterInzynierka.ViewModels
             var dogs = new ObservableCollection<Dog>(_context.Dog.ToList());
             return dogs;
         }
-
-        public List<Dogsattitude> GetAttitudesDogs() {
-            List<Dogsattitude> dogsAttitudes = _context.Dogsattitude.ToList();
-            return dogsAttitudes;
-        }     
-        public List<Catsattitude> GetAttitudesCats() {
-            List<Catsattitude> catsAttitudes = _context.Catsattitude.ToList();
-            return catsAttitudes;
-        }        
-        public List<Kidsattitude> GetAttitudesKids() {
-            List<Kidsattitude> kidsAttitudes = _context.Kidsattitude.ToList();
-            return kidsAttitudes;
+        public IEnumerable GetColors(Dog dog)
+        {
+            var getDogColors = _context.Dogcolor.ToList().Where(x => x.IdDog == dog.IdDog);
+            IList<Models.DB.Color> colorsToReturn = new List<Models.DB.Color>();
+            foreach (Dogcolor dogcolor in getDogColors)
+            {
+                colorsToReturn.Add(_context.Color.Where(x => x.IdColor == dogcolor.IdColor).FirstOrDefault());
+            }
+            return colorsToReturn;
+        } 
+        public int GetLatestDogId()
+        {
+            return _context.Dog.OrderByDescending(x => x.IdDog).FirstOrDefault().IdDog;
         }
         public bool DeleteDogs(List<Dog> dogsToDelete, ObservableCollection<Dog> dogs)
         {
@@ -60,11 +62,58 @@ namespace ShelterInzynierka.ViewModels
             return false;
         }
 
-        internal void AddNewDog(Dog dogToAdd)
+        internal void AddNewDog(Dog dogToAdd, IList chosenColors)
         {
             _context.Add(dogToAdd);
             _context.SaveChanges();
+
+            int addedDogId = GetLatestDogId(); // get latest dog id after adding dog to DB
+            foreach (Models.DB.Color color in chosenColors)
+            {
+                var newDogColor = new Dogcolor();
+                newDogColor.IdColor = color.IdColor;
+                newDogColor.IdDog = addedDogId;
+                _context.Dogcolor.Add(newDogColor);
+            }
+            _context.SaveChanges();
+
             MessageBox.Show($"Poprawnie dodałem psa: \n{dogToAdd.Name} {dogToAdd.ChipNumber}");
+        }
+
+        internal void EditNewDog(Dog dogToEdit, ObservableCollection<Dog> dogs)
+        {
+            // Find the same object in DB
+            var dogFromDb = _context.Dog.FirstOrDefault(x => x.IdDog == dogToEdit.IdDog);
+            var dogFromView = dogs.FirstOrDefault(x => x.IdDog== dogToEdit.IdDog);
+
+            // change properties in DB object
+            dogFromDb.Name = dogToEdit.Name;
+            dogFromDb.ChipNumber = dogToEdit.ChipNumber;
+            dogFromDb.BornDate = dogToEdit.BornDate;
+            dogFromDb.Description = dogToEdit.Description;
+            dogFromDb.HaveCastration = dogToEdit.HaveCastration;
+            dogFromDb.Height = dogToEdit.Height;
+            dogFromDb.Weight = dogToEdit.Weight;
+            dogFromDb.Sex = dogToEdit.Sex;
+            dogFromDb.IdCatsAttitude = dogToEdit.IdCatsAttitude;
+            dogFromDb.IdDogsAttitude = dogToEdit.IdDogsAttitude;
+            dogFromDb.IdKidsAttitude = dogToEdit.IdKidsAttitude;
+
+            // change properties in ObservableColletion for View
+            dogFromView.Name = dogToEdit.Name;
+            dogFromView.ChipNumber = dogToEdit.ChipNumber;
+            dogFromView.BornDate = dogToEdit.BornDate;
+            dogFromView.Description = dogToEdit.Description;
+            dogFromView.HaveCastration = dogToEdit.HaveCastration;
+            dogFromView.Height = dogToEdit.Height;
+            dogFromView.Weight = dogToEdit.Weight;
+            dogFromView.Sex = dogToEdit.Sex;
+            dogFromView.IdCatsAttitude = dogToEdit.IdCatsAttitude;
+            dogFromView.IdDogsAttitude = dogToEdit.IdDogsAttitude;
+            dogFromView.IdKidsAttitude = dogToEdit.IdKidsAttitude;
+
+            _context.SaveChanges();
+            MessageBox.Show("Pomyślnie zmieniłem dane.");
         }
     }
 }

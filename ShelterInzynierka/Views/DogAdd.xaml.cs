@@ -2,6 +2,7 @@
 using ShelterInzynierka.Validations;
 using ShelterInzynierka.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,18 +24,25 @@ namespace ShelterInzynierka.Views
     public partial class DogAdd : Window
     {
         private DogViewModel viewModel = new DogViewModel();
+        private ColorViewModel viewModelColors = new ColorViewModel();
+        private AttitudesViewModel viewModelAttitudes = new AttitudesViewModel();
         public DogAdd()
         {
             InitializeComponent();
             // Binding ComboBoxes with Attutudes from ViewModel
-            ComboBoxDogs.ItemsSource = viewModel.GetAttitudesDogs();
+            ComboBoxDogs.ItemsSource = viewModelAttitudes.GetDogsattitudes();
             ComboBoxDogs.DisplayMemberPath = "Name"; 
-            ComboBoxCats.ItemsSource = viewModel.GetAttitudesCats();
+            ComboBoxCats.ItemsSource = viewModelAttitudes.GetCatsattitudes();
             ComboBoxCats.DisplayMemberPath = "Name";
-            ComboBoxKids.ItemsSource = viewModel.GetAttitudesKids();
+            ComboBoxKids.ItemsSource = viewModelAttitudes.GetKidsattitudes();
             ComboBoxKids.DisplayMemberPath = "Name";
 
+            // Set today's year to BornDate
             DatePickerBornDate.Value = DateTime.Today;
+
+            // Set all available colors
+            ListBoxColors.ItemsSource = viewModelColors.GetColors();
+            ListBoxColors.DisplayMemberPath = "Name";
         }
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
@@ -83,8 +91,11 @@ namespace ShelterInzynierka.Views
                 // Setting Have Castration
                 dogToAdd.HaveCastration = CheckBoxCastration.IsChecked;
 
+                // COLORS - setting colors
+                IList chosenColors = ListBoxColors.SelectedItems;
+
                 // pass to viewmodel
-                viewModel.AddNewDog(dogToAdd);
+                viewModel.AddNewDog(dogToAdd, chosenColors);
 
                 var newWindow = new StartView(); 
                 Close();

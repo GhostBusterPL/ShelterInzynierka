@@ -54,7 +54,7 @@ namespace ShelterInzynierka.Validations
         }
         static public Boolean isOverMaxLengthOrEqual(String property, int maxLenght) 
         {
-            if (property.Length >= maxLenght)
+            if (property.Length > maxLenght)
             {
                 return true;
             }

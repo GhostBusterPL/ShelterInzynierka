@@ -27,18 +27,19 @@
         <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Kliknij na wiersz, a następnie Edytuj bądź Usuń go.</Label>
         <Label Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Podwójne kliknięcie spowoduje wyświetlenie szczegółowych informacji o psie.</Label>
 
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" Name="dgDogs"
-                  AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False">
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" Name="dgDogs" 
+                  AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Imię psa" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Width="*" Header="Nr chipu" Binding="{Binding Path=ChipNumber}"/>
-                <DataGridTextColumn Width="0.5*" Header="Płeć" Binding="{Binding Path=Sex}"/>
-                <DataGridTextColumn Width="0.5*" Header="Wiek" 
+                <DataGridTextColumn Width="0.8*" Header="Imię psa" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="0.8*" Header="Nr chipu" Binding="{Binding Path=ChipNumber}"/>
+                <DataGridTextColumn Width="0.25*" Header="Płeć" Binding="{Binding Path=Sex}"/>
+                <DataGridTextColumn Width="0.3*" Header="Wiek" 
                                     Binding="{Binding Path=BornDate, Converter={StaticResource DateToAgeConverterKey}}"/>
-                <DataGridTextColumn Width="*" Header="Data przybycia" Binding="{Binding Path=JoinDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
-                <DataGridTextColumn Width="*" Header="Data odejścia" Binding="{Binding Path=LeaveDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
-                <DataGridTextColumn Width="0.5*" Header="Waga" Binding="{Binding Path=Weight}"/>
-                <DataGridTextColumn Width="0.6*" Header="Kastracja" 
+                <DataGridTextColumn Width="0.5*" Header="Data przybycia" Binding="{Binding Path=JoinDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
+                <DataGridTextColumn Width="0.6*" Header="Data odejścia" Binding="{Binding Path=LeaveDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
+                <DataGridTextColumn Width="0.3*" Header="Waga" Binding="{Binding Path=Weight}"/>
+                <DataGridTextColumn Width="0.3*" Header="Wzrost" Binding="{Binding Path=Height}"/>
+                <DataGridTextColumn Width="0.35*" Header="Kastracja" 
                                     Binding="{Binding Path=HaveCastration, Converter={StaticResource HaveCastrationConverterKey}}"/>
             </DataGrid.Columns>
         </DataGrid>

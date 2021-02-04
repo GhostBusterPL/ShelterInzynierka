@@ -385,6 +385,8 @@
     <Compile Include="ValueConverters\DateToAgeConverter.cs" />
     <Compile Include="ValueConverters\HaveCastrationConverter.cs" />
     <Compile Include="ValueConverters\OnlyYearMonthDay.cs" />
+    <Compile Include="ViewModels\AttitudesViewModel.cs" />
+    <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="ViewModels\DogViewModel.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
     <Compile Include="Views\AdopterAdd.xaml.cs">
