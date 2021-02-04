@@ -19,6 +19,19 @@ namespace ShelterInzynierka.ViewModels
             var dogs = new ObservableCollection<Dog>(_context.Dog.ToList());
             return dogs;
         }
+
+        public List<Dogsattitude> GetAttitudesDogs() {
+            List<Dogsattitude> dogsAttitudes = _context.Dogsattitude.ToList();
+            return dogsAttitudes;
+        }     
+        public List<Catsattitude> GetAttitudesCats() {
+            List<Catsattitude> catsAttitudes = _context.Catsattitude.ToList();
+            return catsAttitudes;
+        }        
+        public List<Kidsattitude> GetAttitudesKids() {
+            List<Kidsattitude> kidsAttitudes = _context.Kidsattitude.ToList();
+            return kidsAttitudes;
+        }
         public bool DeleteDogs(List<Dog> dogsToDelete, ObservableCollection<Dog> dogs)
         {
             if (dogsToDelete.Count == 1)

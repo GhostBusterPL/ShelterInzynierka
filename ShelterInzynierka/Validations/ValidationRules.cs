@@ -52,7 +52,7 @@ namespace ShelterInzynierka.Validations
             }
             return false;
         }
-        static public Boolean isOverMaxLength(String property, int maxLenght) 
+        static public Boolean isOverMaxLengthOrEqual(String property, int maxLenght) 
         {
             if (property.Length >= maxLenght)
             {
@@ -60,9 +60,17 @@ namespace ShelterInzynierka.Validations
             }
             return false;
         }
-        static public Boolean isOverMinLength(String property, int minLenght)
+        static public Boolean isOverMinLengthOrEqual(String property, int minLenght)
         {
             if (property.Length >= minLenght)
+            {
+                return true;
+            }
+            return false;
+        }
+        static public Boolean isExactLength(String property, int exactLenght)
+        {
+            if (property.Length == exactLenght)
             {
                 return true;
             }

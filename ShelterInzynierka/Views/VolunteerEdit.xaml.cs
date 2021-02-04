@@ -89,7 +89,7 @@ namespace ShelterInzynierka.Views
                 }
                 else
                 {
-                    if (ValidationRules.isOverMaxLength(name, 32))
+                    if (ValidationRules.isOverMaxLengthOrEqual(name, 32))
                     {
                         ErrorName.Content = "Imię może mieć maksymalnie 32 litery.";
                     }
@@ -118,7 +118,7 @@ namespace ShelterInzynierka.Views
                 }
                 else
                 {
-                    if (ValidationRules.isOverMaxLength(surname, 32))
+                    if (ValidationRules.isOverMaxLengthOrEqual(surname, 32))
                     {
                         ErrorSurname.Content = "Nazwisko może mieć maksymalnie 64 litery.";
                     }
@@ -146,13 +146,13 @@ namespace ShelterInzynierka.Views
                 }
                 else
                 {
-                    if (ValidationRules.isOverMaxLength(phoneNumber, 15))
+                    if (ValidationRules.isOverMaxLengthOrEqual(phoneNumber, 15))
                     {
                         ErrorPhoneNumber.Content = "Maksymalna liczba cyfr w numerze: 15.";
                     }
                     else
                     {
-                        if (!ValidationRules.isOverMinLength(phoneNumber, 8))
+                        if (!ValidationRules.isOverMinLengthOrEqual(phoneNumber, 8))
                         {
                             ErrorPhoneNumber.Content = "Minimalna liczba cyfr w numerze: 8.";
                         }
