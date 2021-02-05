@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace ShelterInzynierka.Validations
 {
     public class ValidationRules
     {
+        static public Boolean isSelectedDataGrid (DataGrid dataGrid)
+        {
+            if(dataGrid.SelectedItems.Count == 1)
+            {
+                return true;
+            }
+            return false;
+        }
         static public Boolean isNull (String property) 
         {
             if (String.IsNullOrWhiteSpace(property))
@@ -26,7 +35,22 @@ namespace ShelterInzynierka.Validations
             }
             return false;
         }
-
+        static public Boolean isLettersOrDigitOrSlash(String property)
+        {
+            if (property.All(x => (isCharSlashOrIsLetterOrIsDigit(x))))
+            {
+                return true;
+            }
+            return false;
+        }
+        static Boolean isCharSlashOrIsLetterOrIsDigit (char c)
+        {
+            if (c == '/' || char.IsLetterOrDigit(c))
+                return true;
+            else
+                return false;
+            
+        }
         static public Boolean isNumberWithoutZero (String property)
         {
             if (property.All(char.IsDigit))

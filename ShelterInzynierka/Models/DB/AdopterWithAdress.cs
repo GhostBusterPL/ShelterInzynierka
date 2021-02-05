@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShelterInzynierka.Models.DB
 {
-    class AdopterWithAdress : INotifyPropertyChanged
+    public class AdopterWithAdress : INotifyPropertyChanged
     {
         public AdopterWithAdress()
         {

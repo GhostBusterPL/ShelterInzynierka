@@ -38,6 +38,11 @@ namespace ShelterInzynierka.ViewModels
         {
             return _context.Adopter.Where(x => x.IdAdopter == idAdopter).FirstOrDefault();
         }
+        // return all Adress - Cities with PostCodes
+        public List<Adress> GetAdresses () 
+        {
+            return _context.Adress.ToList();
+        }
 
         // Deleting 1 or more Adopters
         public Boolean DeleteDog (List<AdopterWithAdress> adoptersToDelete, ObservableCollection<AdopterWithAdress> adoptersWithAdress)
@@ -69,6 +74,13 @@ namespace ShelterInzynierka.ViewModels
                 MessageBox.Show("Usunięto osoby adoptujące: \n" + deletedAdoptersNames);
             }
             return false;
+        }
+
+        internal void AddNewAdopter(Adopter newAdopter)
+        {
+            _context.Adopter.Add(newAdopter);
+            MessageBox.Show($"Poprawnie dodałem osobe adoptującą: \n{newAdopter.Name} {newAdopter.Surname}");
+            _context.SaveChanges();
         }
     }
 }

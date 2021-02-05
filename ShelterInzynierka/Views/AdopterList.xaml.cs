@@ -42,7 +42,9 @@ namespace ShelterInzynierka.Views
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
-
+            var adopterToEdit = (AdopterWithAdress)DataGridAdopters.SelectedItem;
+            var editWindow = new AdopterEdit(adopterToEdit, adoptersWithAdress);
+            editWindow.Show();
         }
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)

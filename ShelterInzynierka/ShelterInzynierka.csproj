@@ -394,6 +394,9 @@
     <Compile Include="Views\AdopterAdd.xaml.cs">
       <DependentUpon>AdopterAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdopterEdit.xaml.cs">
+      <DependentUpon>AdopterEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdopterList.xaml.cs">
       <DependentUpon>AdopterList.xaml</DependentUpon>
     </Compile>
@@ -423,6 +426,10 @@
       <DependentUpon>VolunteerList.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AdopterAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdopterEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
