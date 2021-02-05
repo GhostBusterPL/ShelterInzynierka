@@ -1,7 +1,9 @@
-﻿using ShelterInzynierka.Models.DB;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ShelterInzynierka.Models.DB;
 using ShelterInzynierka.Validations;
 using ShelterInzynierka.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -28,6 +30,7 @@ namespace ShelterInzynierka.Views
     {
         private DogViewModel viewModel = new DogViewModel();
         private AttitudesViewModel viewModelAttitudes = new AttitudesViewModel();
+        private ColorViewModel viewModelColors = new ColorViewModel();
         private ObservableCollection<Dog> dogs; //from List View
         private Dog dogToEdit; // selected dog from dog List
 
@@ -45,8 +48,20 @@ namespace ShelterInzynierka.Views
             CheckBoxCastration.IsChecked = dogToEdit.HaveCastration;
 
             // Set all colors
-            ListBoxColors.ItemsSource = viewModel.GetColors(dogToEdit);
+            List<Models.DB.Color> allColors = viewModelColors.GetColors(); // get all available colors in table Color
+            IList<Models.DB.Color> colorInEditDog = viewModel.GetColors(dogToEdit); // get used colors in this dog
+            ListBoxColors.ItemsSource = allColors;
             ListBoxColors.DisplayMemberPath = "Name";
+
+            foreach (Models.DB.Color colorShouldBeSelected in colorInEditDog)
+            {
+                ListBoxColors.SelectedItems.Add(allColors.Where(x => x.Name == colorShouldBeSelected.Name).FirstOrDefault());
+            }
+
+            // Set minimum and maxiumum Date born
+            DateTime maxYear = DateTime.Today.AddYears(-1);
+            DatePickerBornDate.Maximum = maxYear;
+            DatePickerBornDate.Minimum = DateTime.Today.AddYears(-200);
 
             if (dogToEdit.Sex == "K")
             {
@@ -114,8 +129,11 @@ namespace ShelterInzynierka.Views
                 // Setting Have Castration
                 dogToEdit.HaveCastration = CheckBoxCastration.IsChecked;
 
+                // Setting chosen colors
+                IList chosenColors = ListBoxColors.SelectedItems;
+
                 // pass to viewmodel
-                viewModel.EditNewDog(dogToEdit, dogs);
+                viewModel.EditNewDog(dogToEdit, dogs, chosenColors);
                 Close();
             }
         }
