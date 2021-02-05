@@ -65,6 +65,12 @@ namespace ShelterInzynierka.ViewModels
 
                 foreach (Dog dog in dogsToDelete)
                 {
+                    IEnumerable<Dogcolor> usedColorDog = GetDogColorsForIdDog(dog.IdDog); // records in table DogColor for deleting dog in method
+                    if (usedColorDog.Count() > 0)
+                    {
+                        _context.Dogcolor.RemoveRange(usedColorDog);
+                        _context.SaveChanges();
+                    }
                     _context.Dog.Remove(dog);
                     _context.SaveChanges();
                     deletedDogsNames += dog.Name + " " + dog.ChipNumber + "\n";

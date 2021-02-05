@@ -105,9 +105,9 @@ namespace ShelterInzynierka.Views
                 else
                     dogToEdit.Sex = "K";
 
-                // Setting BornDate, JoinDate, LeaveDate
+                // Setting BornDate
                 dogToEdit.BornDate = DatePickerBornDate.Value;
-                dogToEdit.JoinDate = DateTime.Today;
+
 
                 // Setting Name, ChipNumber, Description
                 dogToEdit.Name = TextBoxName.Text;

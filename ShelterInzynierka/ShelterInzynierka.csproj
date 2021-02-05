@@ -371,6 +371,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\DB\Adopter.cs" />
+    <Compile Include="Models\DB\AdopterWithAdress.cs" />
     <Compile Include="Models\DB\Adoption.cs" />
     <Compile Include="Models\DB\Adress.cs" />
     <Compile Include="Models\DB\Catsattitude.cs" />
@@ -385,6 +386,7 @@
     <Compile Include="ValueConverters\DateToAgeConverter.cs" />
     <Compile Include="ValueConverters\HaveCastrationConverter.cs" />
     <Compile Include="ValueConverters\OnlyYearMonthDay.cs" />
+    <Compile Include="ViewModels\AdopterViewModel.cs" />
     <Compile Include="ViewModels\AttitudesViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="ViewModels\DogViewModel.cs" />

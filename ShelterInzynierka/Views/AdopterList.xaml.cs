@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Renci.SshNet.Messages;
+using ShelterInzynierka.Models.DB;
+using ShelterInzynierka.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +23,14 @@ namespace ShelterInzynierka.Views
     /// </summary>
     public partial class AdopterList : Window
     {
+        private AdopterViewModel viewModelAdopter = new AdopterViewModel();
+        private ObservableCollection<AdopterWithAdress> adoptersWithAdress; // ObserveableColletion for DataGrid
         public AdopterList()
         {
             InitializeComponent();
+            adoptersWithAdress = viewModelAdopter.GetJoinData();
+            DataGridAdopters.ItemsSource = adoptersWithAdress;
+
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
@@ -38,7 +47,8 @@ namespace ShelterInzynierka.Views
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
-
+            List<AdopterWithAdress> adoptersToDelete = DataGridAdopters.SelectedItems.Cast<AdopterWithAdress>().ToList();
+            viewModelAdopter.DeleteDog(adoptersToDelete, adoptersWithAdress);
         }
     }
 }
