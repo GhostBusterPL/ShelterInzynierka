@@ -37,12 +37,15 @@ namespace ShelterInzynierka.Views
             ComboBoxKids.ItemsSource = viewModelAttitudes.GetKidsattitudes();
             ComboBoxKids.DisplayMemberPath = "Name";
 
-            // Set today's year to BornDate
-            DatePickerBornDate.Value = DateTime.Today;
-
             // Set all available colors
             ListBoxColors.ItemsSource = viewModelColors.GetColors();
             ListBoxColors.DisplayMemberPath = "Name";
+
+            // Set minimum and maxiumum Date born
+            DateTime maxYear = DateTime.Today.AddYears(-1);
+            DatePickerBornDate.Value = maxYear;
+            DatePickerBornDate.Maximum = maxYear;
+            DatePickerBornDate.Minimum = DateTime.Today.AddYears(-200);
         }
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
