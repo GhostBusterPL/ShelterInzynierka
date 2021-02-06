@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Dodaj nową osobę aduptującą" MinHeight="700" MinWidth="900" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="Dodaj nową osobę adoptującą" MinHeight="700" MinWidth="900" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
 
         <Grid.ColumnDefinitions>
