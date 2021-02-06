@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-      Title="Zmiana danych wolontariusza" MinHeight="500" MinWidth="900" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+      Title="Zmiana danych psa" MinHeight="500" MinWidth="900" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>

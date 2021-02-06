@@ -1,11 +1,11 @@
-﻿<Window x:Class="ShelterInzynierka.Views.AdopterList"
+﻿<Window x:Class="ShelterInzynierka.Views.AdoptionList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
         mc:Ignorable="d"
-        Title="Lista wszystkich osób adoptujących" MinHeight="500" MinWidth="800" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="Lista wszystkich adopcji" MinHeight="500" MinWidth="900" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -27,20 +27,20 @@
 
         <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Margin="0 10 0 0" HorizontalAlignment="Center">Kliknij na wiersz, a następnie Edytuj bądź Usuń go:</Label>
 
-        <DataGrid Name="DataGridAdopters" Grid.Row="2" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" 
+        <DataGrid Name="DataGridAdoptions" Grid.Row="2" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" 
                   AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Imię" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Width="*" Header="Nazwisko" Binding="{Binding Path=Surname}"/>
-                <DataGridTextColumn Width="*" Header="Numer tel" Binding="{Binding Path=PhoneNumber}"/>
-                <DataGridTextColumn Width="*" Header="Ulica" Binding="{Binding Path=Street}"/>
-                <DataGridTextColumn Width="*" Header="Numer domu" Binding="{Binding Path=HouseNumber}"/>
-                <DataGridTextColumn Width="*" Header="Miasto" Binding="{Binding Path=City}"/>
-                <DataGridTextColumn Width="*" Header="Kod Pocztowy" Binding="{Binding Path=PostCode}"/>
+                <DataGridTextColumn Width="0.6*" Header="Imię psa:" Binding="{Binding Path=NameDog}"/>
+                <DataGridTextColumn Width="0.8*" Header="Chip psa:" Binding="{Binding Path=ChipNumber}"/>
+                <DataGridTextColumn Width="*" Header="Imię adoptującego:" Binding="{Binding Path=NameAdopter}"/>
+                <DataGridTextColumn Width="*" Header="Nazwisko adoptującego" Binding="{Binding Path=SurnameAdopter}"/>
+                <DataGridTextColumn Width="0.6*" Header="Data" Binding="{Binding Path=Date, StringFormat=dd-MM-yyyy}"/>
+                <DataGridTextColumn Width="0.9*" Header="Imię wolontariusza" Binding="{Binding Path=NameVolunteer}"/>
+                <DataGridTextColumn Width="1.1*" Header="Nazwisko wolontariusza" Binding="{Binding Path=SurnameVolunteer}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-        <Label Grid.Column="0" Grid.Row="4" FontSize="14" Margin="0 0 0 0" HorizontalAlignment="Center">Wyszukaj nazwisko:</Label>
+
+        <Label Grid.Column="0" Grid.Row="4" FontSize="14" Margin="0 0 0 0" HorizontalAlignment="Center">Wyszukaj nazwisko adoptującego:</Label>
         <TextBox Name="TextBoxSearch" Grid.Column="0" Grid.Row="5" Margin="35 10 35 10"></TextBox>
 
         <Button Grid.Row="5" Grid.Column="1" FontSize="16" Click="Button_Click_Search" Margin="35 10 35 10" IsDefault="True">Szukaj</Button>

@@ -53,6 +53,7 @@ namespace ShelterInzynierka.Views
             ListBoxColors.ItemsSource = allColors;
             ListBoxColors.DisplayMemberPath = "Name";
 
+            // Which color should be selected
             foreach (Models.DB.Color colorShouldBeSelected in colorInEditDog)
             {
                 ListBoxColors.SelectedItems.Add(allColors.Where(x => x.Name == colorShouldBeSelected.Name).FirstOrDefault());

@@ -1,4 +1,5 @@
 ﻿
+using ShelterInzynierka.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,30 @@ namespace ShelterInzynierka.Views
     /// </summary>
     public partial class StartView : Window
     {
+        private StartViewModel startViewModel = new StartViewModel();
         public StartView()
         {
-            InitializeComponent();
+            if (startViewModel.CheckConnection() == false)
+            {
+                Close();
+            }
+            else {
+                InitializeComponent();
+            }
         }
 
         private void Button_Click_Add_Adoption(object sender, RoutedEventArgs e)
         {
-
+            var newWindow = new AdoptionAdd();
+            newWindow.Show();
+            Close();
         }
 
         private void Button_Click_View_Adoptions(object sender, RoutedEventArgs e)
         {
-
+            var newWindow = new AdoptionList();
+            newWindow.Show();
+            Close();
         }
 
         private void Button_Click_Add_Volunteer(object sender, RoutedEventArgs e)

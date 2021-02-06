@@ -15,20 +15,23 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
             <RowDefinition Height="0.7*"/>
             <RowDefinition Height="0.7*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.25*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Kliknij na wiersz, a następnie Edytuj bądź Usuń go.</Label>
         <Label Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Center">Podwójne kliknięcie spowoduje wyświetlenie szczegółowych informacji o psie.</Label>
 
         <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="20 0 20 0" AutoGenerateColumns="False" Name="dgDogs" 
-                  AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                  MouseDoubleClick="MouseDoubleClickEvent" AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="0.8*" Header="Imię psa" Binding="{Binding Path=Name}"/>
                 <DataGridTextColumn Width="0.8*" Header="Nr chipu" Binding="{Binding Path=ChipNumber}"/>
@@ -36,7 +39,7 @@
                 <DataGridTextColumn Width="0.3*" Header="Wiek" 
                                     Binding="{Binding Path=BornDate, Converter={StaticResource DateToAgeConverterKey}}"/>
                 <DataGridTextColumn Width="0.5*" Header="Data przybycia" Binding="{Binding Path=JoinDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
-                <DataGridTextColumn Width="0.6*" Header="Data odejścia" Binding="{Binding Path=LeaveDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
+                <DataGridTextColumn Width="0.6*" Header="Data adopcji" Binding="{Binding Path=LeaveDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
                 <DataGridTextColumn Width="0.3*" Header="Waga" Binding="{Binding Path=Weight}"/>
                 <DataGridTextColumn Width="0.3*" Header="Wzrost" Binding="{Binding Path=Height}"/>
                 <DataGridTextColumn Width="0.35*" Header="Kastracja" 
@@ -44,8 +47,13 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="5" Grid.Column="0" FontSize="16" Click="Button_Click_Delete" Margin="35 10 35 10">Usuń</Button>
-        <Button Grid.Row="5" Grid.Column="1" FontSize="16" Click="Button_Click_Edit" Margin="35 10 35 10">Edytuj</Button>
-        <Button Grid.Row="5" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="35 10 35 10">Powrót</Button>
+        <Label Grid.Column="0" Grid.Row="5" FontSize="14" Margin="0 0 0 0" HorizontalAlignment="Center">Wyszukaj imię psa:</Label>
+        <TextBox Name="TextBoxSearch" Grid.Column="0" Grid.Row="6" Margin="30 10 30 10"></TextBox>
+
+        <Button Grid.Row="6" Grid.Column="1" FontSize="16" Click="Button_Click_Search" Margin="35 10 35 10" IsDefault="True">Szukaj</Button>
+        <Button Grid.Row="6" Grid.Column="2" FontSize="16" Click="Button_Click_Reset" Margin="35 10 35 10">Resetuj szukanie</Button>
+        <Button Grid.Row="8" Grid.Column="0" FontSize="16" Click="Button_Click_Delete" Margin="35 10 35 10">Usuń</Button>
+        <Button Grid.Row="8" Grid.Column="1" FontSize="16" Click="Button_Click_Edit" Margin="35 10 35 10">Edytuj</Button>
+        <Button Grid.Row="8" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="35 10 35 10" IsCancel="True">Powrót</Button>
     </Grid>
 </Window>

@@ -370,8 +370,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\AdoptionToView.cs" />
     <Compile Include="Models\DB\Adopter.cs" />
-    <Compile Include="Models\DB\AdopterWithAdress.cs" />
+    <Compile Include="Models\AdopterWithAdress.cs" />
     <Compile Include="Models\DB\Adoption.cs" />
     <Compile Include="Models\DB\Adress.cs" />
     <Compile Include="Models\DB\Catsattitude.cs" />
@@ -387,9 +388,11 @@
     <Compile Include="ValueConverters\HaveCastrationConverter.cs" />
     <Compile Include="ValueConverters\OnlyYearMonthDay.cs" />
     <Compile Include="ViewModels\AdopterViewModel.cs" />
+    <Compile Include="ViewModels\AdoptionViewModel.cs" />
     <Compile Include="ViewModels\AttitudesViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="ViewModels\DogViewModel.cs" />
+    <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
     <Compile Include="Views\AdopterAdd.xaml.cs">
       <DependentUpon>AdopterAdd.xaml</DependentUpon>
@@ -400,8 +403,20 @@
     <Compile Include="Views\AdopterList.xaml.cs">
       <DependentUpon>AdopterList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdoptionAdd.xaml.cs">
+      <DependentUpon>AdoptionAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdoptionEdit.xaml.cs">
+      <DependentUpon>AdoptionEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdoptionList.xaml.cs">
+      <DependentUpon>AdoptionList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DogAdd.xaml.cs">
       <DependentUpon>DogAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DogDetails.xaml.cs">
+      <DependentUpon>DogDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DogEdit.xaml.cs">
       <DependentUpon>DogEdit.xaml</DependentUpon>
@@ -437,7 +452,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AdoptionAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdoptionEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdoptionList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DogAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DogDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,7 +22,7 @@ namespace ShelterInzynierka.ValueConverters
             else
             {
                 DateTime returnDate = (DateTime)value;
-                return returnDate.ToString("yyyy-mm-dd");
+                return returnDate.ToString("yyyy-MM-dd");
             }
 
         }

@@ -17,6 +17,8 @@ namespace ShelterInzynierka.ViewModels
     {
         private inzContext _context = new inzContext();
 
+        private AdoptionViewModel viewModelAdoption = new AdoptionViewModel();
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void RaisePropertyChange(string propertyname)
         {
@@ -25,13 +27,17 @@ namespace ShelterInzynierka.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
             }
         }
-
+        // Get Volunteers in DB and pack them to ObCol
         public ObservableCollection<Volunteer> GetVolunteers()
         {
             var volunteers = new ObservableCollection<Volunteer>(_context.Volunteer.ToList());
             return volunteers;
         }
-
+        // Get Volunteer by ID
+        public Volunteer GetVolunteerById(int idVolunteer)
+        {
+            return _context.Volunteer.Where(x => x.IdVolunteer == idVolunteer).FirstOrDefault();
+        }
         // Method: Add new Volunteer to DB
         public void AddNewVolunteer (Volunteer newVolunteer)
         {
@@ -43,6 +49,15 @@ namespace ShelterInzynierka.ViewModels
         // Method: Deleting 1 or more Volonteers
         public bool DeleteVolunteer(List<Volunteer> volunteersToDelete, ObservableCollection<Volunteer> volunteers)
         {
+            foreach (Volunteer usedVolunteer in volunteersToDelete)
+            {
+                if(viewModelAdoption.isUsedVolunteer(usedVolunteer.IdVolunteer) == true)
+                {
+                    MessageBox.Show("Ten wolontariusz:\n" + usedVolunteer.Name + " " + usedVolunteer.Surname + 
+                        "\n\nPrzeprowadził już adopcję psa.\nNajpierw usuń adopcję, jeśli chcesz usunąć tego wolontariusza.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+            }
             if (volunteersToDelete.Count == 1)
             {
                 var volunteerToDelete = volunteersToDelete.OfType<Volunteer>().FirstOrDefault(); // volunteer to delete

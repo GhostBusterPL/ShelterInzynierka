@@ -58,7 +58,7 @@ namespace ShelterInzynierka.Views
             Boolean surnameFlag = surnameValidation(surname);
             Boolean phoneNumberFlag = phoneNumberValidation(phoneNumber);
 
-            // if 3 validation methods are TRUE, pass new Volunteer to ViewModel
+            // if 3 validation methods are TRUE, pass Volunteer to ViewModel
             if (nameFlag == true &&
                 surnameFlag == true &&
                 phoneNumberFlag == true)

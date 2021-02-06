@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ShelterInzynierka.ViewModels
 {
@@ -14,6 +16,7 @@ namespace ShelterInzynierka.ViewModels
     {
         private inzContext _context = new inzContext();
 
+        private AdoptionViewModel viewModelAdoption = new AdoptionViewModel();
         // return data for DataGrid - observable colletion with Table Adopter + Adress in 1 class
         public ObservableCollection<AdopterWithAdress> GetJoinData ()
         {
@@ -22,6 +25,7 @@ namespace ShelterInzynierka.ViewModels
                         select new AdopterWithAdress 
                         { 
                             IdAdopter = Adopter.IdAdopter,
+                            IdAdress = Adopter.IdAdress,
                             Name = Adopter.Name,
                             Surname = Adopter.Surname,
                             PhoneNumber = Adopter.PhoneNumber,
@@ -44,9 +48,25 @@ namespace ShelterInzynierka.ViewModels
             return _context.Adress.ToList();
         }
 
-        // Deleting 1 or more Adopters
-        public Boolean DeleteDog (List<AdopterWithAdress> adoptersToDelete, ObservableCollection<AdopterWithAdress> adoptersWithAdress)
+        //return Adress by Specified ID
+        public Adress GetAdressById(int idAdress)
         {
+            return _context.Adress.Where(x => x.IdAdress == idAdress).FirstOrDefault();
+        }
+
+        // Deleting 1 or more Adopters
+        public Boolean DeleteAdopters (List<AdopterWithAdress> adoptersToDelete, ObservableCollection<AdopterWithAdress> adoptersWithAdress)
+        {
+            foreach (AdopterWithAdress usedAdopter in adoptersToDelete)
+            {
+                if (viewModelAdoption.isUsedAdopter(usedAdopter.IdAdopter) == true)
+                {
+                    MessageBox.Show("Ten adoptujący:\n" + usedAdopter.Name + " " + usedAdopter.Surname +
+                        "\n\nBrał już udział w adopcji.\nNajpierw usuń adopcję, jeśli chcesz usunąć tego adoptującego.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+            }
+
             if (adoptersToDelete.Count == 1)
             {
                 var adopterToDelete = GetAdopterById(adoptersToDelete.FirstOrDefault().IdAdopter); // adopter to delete
@@ -81,6 +101,35 @@ namespace ShelterInzynierka.ViewModels
             _context.Adopter.Add(newAdopter);
             MessageBox.Show($"Poprawnie dodałem osobe adoptującą: \n{newAdopter.Name} {newAdopter.Surname}");
             _context.SaveChanges();
+        }
+
+        internal void EditAdopter (AdopterWithAdress editAdopter, ObservableCollection<AdopterWithAdress> adoptersWithAdress)
+        {
+            // Find the same object in DB
+            var adopterFromDb = GetAdopterById(editAdopter.IdAdopter);
+            var adopterFromView = adoptersWithAdress.FirstOrDefault(x => x.IdAdopter == editAdopter.IdAdopter);
+
+            // change properties in DB object
+            adopterFromDb.Name = editAdopter.Name;
+            adopterFromDb.Surname = editAdopter.Surname;
+            adopterFromDb.PhoneNumber = editAdopter.PhoneNumber;
+            adopterFromDb.Street = editAdopter.Street;
+            adopterFromDb.HouseNumber = editAdopter.HouseNumber;
+            adopterFromDb.IdAdress = editAdopter.IdAdress;
+
+            // change properties in ObservableColletion for View
+            adopterFromView.Name = editAdopter.Name;
+            adopterFromView.Surname = editAdopter.Surname;
+            adopterFromView.PhoneNumber = editAdopter.PhoneNumber;
+            adopterFromView.Street = editAdopter.Street;
+            adopterFromView.HouseNumber = editAdopter.HouseNumber;
+            adopterFromView.IdAdress = editAdopter.IdAdress;
+            adopterFromView.City = editAdopter.City;
+            adopterFromView.PostCode = editAdopter.PostCode;
+
+
+            _context.SaveChanges();
+            MessageBox.Show("Pomyślnie zmieniłem dane.");
         }
     }
 }

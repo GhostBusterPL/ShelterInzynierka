@@ -15,6 +15,7 @@ namespace ShelterInzynierka.ViewModels
     {
         private inzContext _context = new inzContext();
 
+        private AdoptionViewModel viewModelAdoption = new AdoptionViewModel();
         // Get all Dogs in Dog Table
         public ObservableCollection<Dog> GetDogs()
         {
@@ -32,6 +33,11 @@ namespace ShelterInzynierka.ViewModels
             }
             return colorsToReturn;
         } 
+        // Get Dog by ID
+        public Dog GetDogById (int idDog)
+        {
+            return _context.Dog.Where(x => x.IdDog == idDog).FirstOrDefault();
+        }
         // Get latest id in table Dog
         public int GetLatestDogId()
         {
@@ -44,6 +50,15 @@ namespace ShelterInzynierka.ViewModels
         }
         public bool DeleteDogs(List<Dog> dogsToDelete, ObservableCollection<Dog> dogs)
         {
+            foreach (Dog usedDog in dogsToDelete) // check if we have it already in Adoption
+            {
+                if (viewModelAdoption.isUsedDog(usedDog.IdDog) == true)
+                {
+                    MessageBox.Show("Ten pies:\n" + usedDog.Name + " " + usedDog.ChipNumber +
+                        "\n\nBrał już udział w adopcji.\nNajpierw usuń adopcję, jeśli chcesz usunąć tego psa.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+            }
             if (dogsToDelete.Count == 1)
             {
                 var dogTodelete = dogsToDelete.OfType<Dog>().FirstOrDefault(); // dog to be deleted
@@ -81,7 +96,7 @@ namespace ShelterInzynierka.ViewModels
             }
             return false;
         }
-
+        // Add new dog
         internal void AddNewDog(Dog dogToAdd, IList chosenColors)
         {
             _context.Add(dogToAdd);
@@ -99,7 +114,7 @@ namespace ShelterInzynierka.ViewModels
 
             MessageBox.Show($"Poprawnie dodałem psa: \n{dogToAdd.Name} {dogToAdd.ChipNumber}");
         }
-
+        // Edit existing dog
         internal void EditNewDog(Dog dogToEdit, ObservableCollection<Dog> dogs, IList chosenColors)
         {
             // Find the same object in DB
