@@ -60,6 +60,7 @@ namespace ShelterInzynierka.Views
             {
                 List<AdopterWithAdress> adoptersToDelete = DataGridAdopters.SelectedItems.Cast<AdopterWithAdress>().ToList();
                 viewModelAdopter.DeleteAdopters(adoptersToDelete, adoptersWithAdress);
+                adoptersWithAdressWithoutFilter = new ObservableCollection<AdopterWithAdress>(adoptersWithAdress);
             }
         }
         // Search by surname

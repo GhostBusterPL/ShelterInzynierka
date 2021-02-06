@@ -22,6 +22,12 @@ namespace ShelterInzynierka.ViewModels
             var dogs = new ObservableCollection<Dog>(_context.Dog.ToList());
             return dogs;
         }
+        // Get Free dogs to Adopt - having null in LeaveDate
+        public ObservableCollection<Dog> GetDogsWithoutLeaveDate ()
+        {
+            var dogs = new ObservableCollection<Dog>(_context.Dog.Where(x => x.LeaveDate == DateTime.MinValue));
+            return dogs;
+        }
         // Get all used Colors in table Color for specified dog 
         public IList<Models.DB.Color> GetColors(Dog dog)
         {

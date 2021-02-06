@@ -3,6 +3,8 @@ using ShelterInzynierka.Validations;
 using ShelterInzynierka.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +25,15 @@ namespace ShelterInzynierka.Views
     public partial class AdopterAdd : Window
     {
         private AdopterViewModel viewModelAdopter = new AdopterViewModel();
+        private ObservableCollection<Adress> addresses;
+        private ObservableCollection<Adress> addressesWithoutFilter;
         public AdopterAdd()
         {
             InitializeComponent();
-            DataGridCity.ItemsSource = viewModelAdopter.GetAdresses();
+            var adressesFromDB = viewModelAdopter.GetAdresses();
+            this.addresses = new ObservableCollection<Adress>(adressesFromDB);
+            this.addressesWithoutFilter = new ObservableCollection<Adress>(addresses);
+            DataGridCity.ItemsSource = addresses;
         }
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
@@ -223,7 +230,24 @@ namespace ShelterInzynierka.Views
             }
             return true;
         }
+        // Find PostCode from TextBox
+        private void Button_Click_SearchPostCode(object sender, RoutedEventArgs e)
+        {
+            string searchValue = WatermarkTextBoxSearch.Text;
 
+            var _itemSourceList = new CollectionViewSource() { Source = addresses };
+            ICollectionView FilteredItemsList = _itemSourceList.View;
+
+            var filter = new Predicate<object>(x => ((Adress)x).PostCode.ToLower().Contains(searchValue.ToLower()));
+            FilteredItemsList.Filter = filter;
+            DataGridCity.ItemsSource = FilteredItemsList;
+        }
+
+        private void Button_Click_ResetSearchPostCode(object sender, RoutedEventArgs e)
+        {
+            DataGridCity.ItemsSource = addressesWithoutFilter;
+
+        }
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             var newWindow = new StartView();

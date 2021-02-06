@@ -55,6 +55,7 @@ namespace ShelterInzynierka.Views
             {
                 List<Volunteer> volunteersToDelete = dgVolunteers.SelectedItems.Cast<Volunteer>().ToList();
                 viewModel.DeleteVolunteer(volunteersToDelete, volunteers);
+                volunteersWithoutFilter = new ObservableCollection<Volunteer>(volunteers);
             }
         }
         // Search by surname

@@ -4,6 +4,7 @@ using ShelterInzynierka.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,11 +27,16 @@ namespace ShelterInzynierka.Views
         private AdopterViewModel viewmodel = new AdopterViewModel();
         private AdopterWithAdress adopterToEdit;
         private ObservableCollection<AdopterWithAdress> adoptersWithAdress;
+        private ObservableCollection<Adress> addresses;
+        private ObservableCollection<Adress> addressesWithoutFilter;
 
         public AdopterEdit(AdopterWithAdress adopterToEdit, ObservableCollection<AdopterWithAdress> adoptersWithAdress)
         {
             this.adopterToEdit = adopterToEdit;
             this.adoptersWithAdress = adoptersWithAdress;
+            var getAdresses = new ObservableCollection<Adress>(viewmodel.GetAdresses());
+            this.addresses = getAdresses;
+            this.addressesWithoutFilter = new ObservableCollection<Adress>(addresses);
             InitializeComponent();
 
             TextBoxName.Text = adopterToEdit.Name;
@@ -242,6 +248,24 @@ namespace ShelterInzynierka.Views
                 return false;
             }
             return true;
+        }
+        // Find PostCode from TextBox
+        private void Button_Click_SearchPostCode(object sender, RoutedEventArgs e)
+        {
+            string searchValue = WatermarkTextBoxSearch.Text;
+
+            var _itemSourceList = new CollectionViewSource() { Source = addresses };
+            ICollectionView FilteredItemsList = _itemSourceList.View;
+
+            var filter = new Predicate<object>(x => ((Adress)x).PostCode.ToLower().Contains(searchValue.ToLower()));
+            FilteredItemsList.Filter = filter;
+            DataGridCity.ItemsSource = FilteredItemsList;
+        }
+
+        private void Button_Click_ResetSearchPostCode(object sender, RoutedEventArgs e)
+        {
+            DataGridCity.ItemsSource = addressesWithoutFilter;
+
         }
     }
 }

@@ -45,6 +45,7 @@ namespace ShelterInzynierka.Views
             {
                 List <AdoptionToView> adoptionsToDelete = DataGridAdoptions.SelectedItems.Cast<AdoptionToView>().ToList();
                 adoptionViewModel.DeleteAdoptions(adoptionsToDelete, adoptions);
+                adoptionsWithoutFilter = new ObservableCollection<AdoptionToView>(adoptions);
             }
         }
         // Editing Dog

@@ -41,16 +41,16 @@ namespace ShelterInzynierka.Views
         {
             InitializeComponent();
             volunteers = viewModelVolunteer.GetVolunteers();
-            dogs = viewModelDog.GetDogs();
+            dogs = viewModelDog.GetDogsWithoutLeaveDate(); // get only free dogs - without Leave Date
             adopters = viewModelAdopter.GetJoinData();
 
             volunteersWithoutFilter = new ObservableCollection<Volunteer>(volunteers);
             dogsWithoutFilter = new ObservableCollection<Dog>(dogs);
             adoptersWithoutFilter = new ObservableCollection<AdopterWithAdress>(adopters);
 
-            DataGridAdopters.ItemsSource = viewModelAdopter.GetJoinData();
-            DataGridDogs.ItemsSource = viewModelDog.GetDogs();
-            DataGridVolunteers.ItemsSource = viewModelVolunteer.GetVolunteers();
+            DataGridAdopters.ItemsSource = adopters;
+            DataGridDogs.ItemsSource = dogs;
+            DataGridVolunteers.ItemsSource = volunteers;
         }
 
         // Search Volunteer

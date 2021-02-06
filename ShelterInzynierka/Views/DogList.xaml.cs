@@ -45,6 +45,7 @@ namespace ShelterInzynierka.Views
             {
                 List<Dog> dogsToDelete = dgDogs.SelectedItems.Cast<Dog>().ToList();
                 viewModel.DeleteDogs(dogsToDelete, dogs);
+                dogsWithoutFilter = new ObservableCollection<Dog>(dogs);
             }
         }
         // Editing Dog
@@ -65,7 +66,7 @@ namespace ShelterInzynierka.Views
             var _itemSourceList = new CollectionViewSource() { Source = dogs };
             ICollectionView FilteredItemsList = _itemSourceList.View;
 
-            var filter = new Predicate<object>(x => ((Dog)x).Name.ToLower().Contains(searchValue.ToLower()));
+            var filter = new Predicate<object>(x => ((Dog)x).ChipNumber.ToLower().Contains(searchValue.ToLower()));
             FilteredItemsList.Filter = filter;
             dgDogs.ItemsSource = FilteredItemsList;
         }
