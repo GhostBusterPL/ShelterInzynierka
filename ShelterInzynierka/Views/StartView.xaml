@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
         mc:Ignorable="d"
-        Title="Adoptsiak 1.0" MinHeight="500" MinWidth="800" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize"> 
+        Title="Adopsiak 1.0" MinHeight="500" MinWidth="800" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize"> 
     <Grid>
         <!-- Windows definition -->
         <Grid.ColumnDefinitions>

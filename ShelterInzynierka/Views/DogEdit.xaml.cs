@@ -67,7 +67,8 @@ namespace ShelterInzynierka.Views
             if (dogToEdit.Sex == "K")
             {
                 RadioButtonFemale.IsChecked = true;
-            } else
+            }
+            else
             {
                 RadioButtonMale.IsChecked = true;
             }
@@ -188,12 +189,19 @@ namespace ShelterInzynierka.Views
                 {
                     if (!ValidationRules.isNumberWithoutZero(name))
                     {
-                        ErrorChipNumber.Content = "Numer chipu składa się tylko z cyfr naturalnych.";
+                        ErrorChipNumber.Content = "Numer chipu składa się tylko z liczb naturalnych.";
                     }
                     else
                     {
-                        ErrorChipNumber.Content = "";
-                        return true;
+                        if (!(viewModel.GetDogByChipNumber(name) == null))
+                        {
+                            ErrorChipNumber.Content = "W systemie jest już pies z tym numerem chipu.";
+                        }
+                        else
+                        {
+                            ErrorChipNumber.Content = "";
+                            return true;
+                        }
                     }
                 }
             }

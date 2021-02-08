@@ -90,19 +90,19 @@ namespace ShelterInzynierka.Views
         // Search Adopter
         private void Button_Click_ResetAdopter(object sender, RoutedEventArgs e)
         {
+            DataGridAdopters.ItemsSource = adoptersWithoutFilter;
+        }
+
+        private void Button_Click_SearchAdopter(object sender, RoutedEventArgs e)
+        {
             string searchValue = TextBoxSearchAdopter.Text;
 
             var _itemSourceList = new CollectionViewSource() { Source = adopters };
             ICollectionView FilteredItemsList = _itemSourceList.View;
 
-            var filter = new Predicate<object>(x => ((Adopter)x).Surname.ToLower().Contains(searchValue.ToLower()));
+            var filter = new Predicate<object>(x => ((AdopterWithAdress)x).Surname.ToLower().Contains(searchValue.ToLower()));
             FilteredItemsList.Filter = filter;
-            DataGridVolunteers.ItemsSource = FilteredItemsList;
-        }
-
-        private void Button_Click_SearchAdopter(object sender, RoutedEventArgs e)
-        {
-            DataGridVolunteers.ItemsSource = adoptersWithoutFilter;
+            DataGridAdopters.ItemsSource = FilteredItemsList;
         }
 
         // Creating new Adoption

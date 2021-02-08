@@ -118,6 +118,7 @@ namespace ShelterInzynierka.ViewModels
                 deletedAdoptions += adoption.NameDog + " " + adoption.ChipNumber + "\n";
                 var adopterToDelete = GetAdoptionById(adoption.IdAdoption);
                 _context.Adoption.Remove(adopterToDelete);
+                _context.Dog.Where(x => x.IdDog == adoption.IdDog).FirstOrDefault().LeaveDate = DateTime.MinValue; // reset adoption date 
                 adoptions.Remove(adoption);
             }
             MessageBox.Show("Usunięto adopcję psów: \n" + deletedAdoptions);

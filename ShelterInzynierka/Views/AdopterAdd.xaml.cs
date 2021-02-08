@@ -204,7 +204,7 @@ namespace ShelterInzynierka.Views
             {
                 if (!ValidationRules.isLettersOrDigitOrSlash(houseNumber))
                 {
-                    ErrorHouseNumber.Content = "Numer składa się tylko z Dużych i małych liter oraz cyfr.";
+                    ErrorHouseNumber.Content = "Numer składa się tylko z Dużych i małych liter, znaku '/' oraz cyfr.";
                 }
                 else
                 {
