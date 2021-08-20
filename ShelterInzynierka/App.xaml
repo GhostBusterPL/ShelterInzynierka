@@ -5,8 +5,18 @@
              xmlns:super="clr-namespace:ShelterInzynierka.ValueConverters"
              StartupUri="Views/StartView.xaml">
     <Application.Resources>
-        <super:HaveCastrationConverter x:Key="HaveCastrationConverterKey"/>
-        <super:DateToAgeConverter x:Key="DateToAgeConverterKey"/>
-        <super:OnlyYearMonthDay x:Key="OnlyYearMonthDayKey"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <!-- Theme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <super:HaveCastrationConverter x:Key="HaveCastrationConverterKey"/>
+            <super:DateToAgeConverter x:Key="DateToAgeConverterKey"/>
+            <super:OnlyYearMonthDay x:Key="OnlyYearMonthDayKey"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -43,10 +43,10 @@
         <Label Grid.Column="0" Grid.Row="4" FontSize="14" Margin="0 0 0 0" HorizontalAlignment="Center">Wyszukaj nazwisko adoptującego:</Label>
         <TextBox Name="TextBoxSearch" Grid.Column="0" Grid.Row="5" Margin="35 10 35 10"></TextBox>
 
-        <Button Grid.Row="5" Grid.Column="1" FontSize="16" Click="Button_Click_Search" Margin="35 10 35 10" IsDefault="True">Szukaj</Button>
-        <Button Grid.Row="5" Grid.Column="2" FontSize="16" Click="Button_Click_Reset" Margin="35 10 35 10">Resetuj szukanie</Button>
-        <Button Grid.Row="7" Grid.Column="0" FontSize="16" Click="Button_Click_Delete" Margin="35 10 35 10">Usuń</Button>
-        <Button Grid.Row="7" Grid.Column="1" FontSize="16" Click="Button_Click_Edit" Margin="35 10 35 10">Edytuj</Button>
-        <Button Grid.Row="7" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="35 10 35 10" IsCancel="True">Powrót</Button>
+        <Button Grid.Row="5" Grid.Column="1" FontSize="14" Click="Button_Click_Search" Margin="35 10 35 10" IsDefault="True">Szukaj</Button>
+        <Button Grid.Row="5" Grid.Column="2" FontSize="14" Click="Button_Click_Reset" Margin="35 10 35 10">Resetuj szukanie</Button>
+        <Button Grid.Row="7" Grid.Column="0" FontSize="14" Click="Button_Click_Delete" Margin="35 10 35 10">Usuń</Button>
+        <Button Grid.Row="7" Grid.Column="1" FontSize="14" Click="Button_Click_Edit" Margin="35 10 35 10">Edytuj</Button>
+        <Button Grid.Row="7" Grid.Column="2" FontSize="14" Click="Button_Click_Back" Margin="35 10 35 10" IsCancel="True">Powrót</Button>
     </Grid>
 </Window>

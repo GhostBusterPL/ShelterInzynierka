@@ -39,10 +39,10 @@
         <Label Grid.Column="0" Grid.Row="5" FontSize="14" Margin="0 0 0 0" HorizontalAlignment="Center">Wyszukaj nazwisko:</Label>
         <TextBox Name="TextBoxSearch" Grid.Column="0" Grid.Row="6" Margin="30 10 30 10"></TextBox>
 
-        <Button Grid.Row="6" Grid.Column="1" FontSize="16" Click="Button_Click_Search" Margin="20 10 20 10" IsDefault="True">Szukaj</Button>
-        <Button Grid.Row="6" Grid.Column="2" FontSize="16" Click="Button_Click_Reset" Margin="20 10 20 10">Resetuj szukanie</Button>
-        <Button Grid.Row="8" Grid.Column="0" FontSize="16" Click="Button_Click_Delete" Margin="20 10 20 10">Usuń</Button>
-        <Button Grid.Row="8" Grid.Column="1" FontSize="16" Click="Button_Click_Edit" Margin="20 10 20 10">Edytuj</Button>
-        <Button Grid.Row="8" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="20 10 20 10" IsCancel="True">Powrót</Button>
+        <Button Grid.Row="6" Grid.Column="1" FontSize="14" Click="Button_Click_Search" Margin="20 10 20 5" IsDefault="True">Szukaj</Button>
+        <Button Grid.Row="6" Grid.Column="2" FontSize="14" Click="Button_Click_Reset" Margin="20 10 20 5">Resetuj szukanie</Button>
+        <Button Grid.Row="8" Grid.Column="0" FontSize="14" Click="Button_Click_Delete" Margin="20 10 20 5">Usuń</Button>
+        <Button Grid.Row="8" Grid.Column="1" FontSize="14" Click="Button_Click_Edit" Margin="20 10 20 5">Edytuj</Button>
+        <Button Grid.Row="8" Grid.Column="2" FontSize="14" Click="Button_Click_Back" Margin="20 10 20 5" IsCancel="True">Powrót</Button>
     </Grid>
 </Window>

@@ -49,6 +49,11 @@ namespace ShelterInzynierka.ViewModels
         {
             return _context.Dog.Where(x => x.ChipNumber == chipNumber).FirstOrDefault();
         }
+        // Get Dog by ChipNumber Without now edited dog
+        public Dog GetDogByChipNumberWihtoutEditedDog(string chipNumber, int idDog)
+        {
+            return _context.Dog.Where(x => x.ChipNumber == chipNumber).Where(x => x.IdDog != idDog).FirstOrDefault();
+        }
         // Get latest id in table Dog
         public int GetLatestDogId()
         {

@@ -95,7 +95,7 @@ namespace ShelterInzynierka.Views
             string chipNumber = TextBoxChipNumber.Text;
 
             Boolean flagName = nameValidation(name);
-            Boolean flagChipNumber = chipNumberValidation(chipNumber);
+            Boolean flagChipNumber = chipNumberValidation(chipNumber, dogToEdit.IdDog);
 
             if (flagName == true && flagChipNumber == true)
             {
@@ -173,7 +173,7 @@ namespace ShelterInzynierka.Views
         }
 
         // Chip Number Validation
-        private Boolean chipNumberValidation(string name)
+        private Boolean chipNumberValidation(string name, int id)
         {
             if (ValidationRules.isNull(name))
             {
@@ -193,7 +193,7 @@ namespace ShelterInzynierka.Views
                     }
                     else
                     {
-                        if (!(viewModel.GetDogByChipNumber(name) == null))
+                        if (!(viewModel.GetDogByChipNumberWihtoutEditedDog(name, id) == null))
                         {
                             ErrorChipNumber.Content = "W systemie jest już pies z tym numerem chipu.";
                         }
