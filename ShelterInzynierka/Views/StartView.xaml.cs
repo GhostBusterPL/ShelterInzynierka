@@ -32,7 +32,7 @@ namespace ShelterInzynierka.Views
             }
             else {
                 InitializeComponent();
-
+                this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
                 // Set information to dashboard's controls
                 LabelAllAvailableDogsNumber.Content = dogViewModel.GetDogsWithoutLeaveDate().Count.ToString();
                 LabelAllAvailableMenNumber.Content = dogViewModel.GetMenDogsWithoutLeaveDate().Count.ToString();
@@ -40,6 +40,11 @@ namespace ShelterInzynierka.Views
                 LabelAdoptionsInLast30DaysNumber.Content = dogViewModel.GetDogsFromThirtyDaysInShelter().Count.ToString();
                 dgDogs.ItemsSource = dogViewModel.GetSixLastDogsInShelter();
             }
+        }
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void Button_Click_Add_Adoption(object sender, RoutedEventArgs e)
