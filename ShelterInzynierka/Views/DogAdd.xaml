@@ -89,7 +89,7 @@
         <ComboBox Grid.Column="5" Grid.Row="5" Name="ComboBoxKids" SelectedIndex="0"></ComboBox>
         
         <!--Control window buttons-->
-        <Button Grid.Column="4" Grid.Row="7" Margin="10" FontSize="16" Click="Button_Click_Save">Zapisz</Button>
+        <Button Grid.Column="4" Grid.Row="7" Margin="10" FontSize="16" Click="Button_Click_Save" IsDefault="True">Zapisz</Button>
         <Button Grid.Column="5" Grid.Row="7" Margin="10" FontSize="16" Click="Button_Click_Back" IsCancel="True">Powrót</Button>
     </Grid>
 </Window>

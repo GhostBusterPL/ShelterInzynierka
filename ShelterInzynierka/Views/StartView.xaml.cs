@@ -38,7 +38,7 @@ namespace ShelterInzynierka.Views
                 LabelAllAvailableMenNumber.Content = dogViewModel.GetMenDogsWithoutLeaveDate().Count.ToString();
                 LabelAllAvailableWomenNumber.Content = dogViewModel.GetWomenDogsWithoutLeaveDate().Count.ToString();
                 LabelAdoptionsInLast30DaysNumber.Content = dogViewModel.GetDogsFromThirtyDaysInShelter().Count.ToString();
-                dgDogs.ItemsSource = dogViewModel.GetFiveLastDogsInShelter();
+                dgDogs.ItemsSource = dogViewModel.GetSixLastDogsInShelter();
             }
         }
 

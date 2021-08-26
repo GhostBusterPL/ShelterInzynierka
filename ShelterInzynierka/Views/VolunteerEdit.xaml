@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
         mc:Ignorable="d"
-        Title="Zmiana danych wolontariusza" MinHeight="500" MinWidth="500" Height="500" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+        Title="Zmiana danych wolontariusza" MinHeight="450" MinWidth="500" Height="450" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
         <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Margin="15" Name="TextBoxSurname"></TextBox>
         <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6" Margin="15" Name="TextBoxPhone"></TextBox>
 
-        <Button Grid.Column="2" Grid.Row="8" Margin="10" FontSize="16" Click="Button_Click_Save">Zapisz</Button>
+        <Button Grid.Column="2" Grid.Row="8" Margin="10" FontSize="16" Click="Button_Click_Save" IsEnabled="True">Zapisz</Button>
         <Button Grid.Column="3" Grid.Row="8" Margin="10" FontSize="16" Click="Button_Click_Back" IsCancel="True">Powrót</Button>
     </Grid>
 </Window>

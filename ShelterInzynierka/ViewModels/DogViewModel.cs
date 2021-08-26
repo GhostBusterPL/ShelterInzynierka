@@ -48,9 +48,9 @@ namespace ShelterInzynierka.ViewModels
             return dogs;
         }
         // Get newest 5 dogs in the shelter
-        public ObservableCollection<Dog> GetFiveLastDogsInShelter()
+        public ObservableCollection<Dog> GetSixLastDogsInShelter()
         {
-            var dogs = new ObservableCollection<Dog>(_context.Dog.OrderByDescending(x => x.JoinDate).Take(5));
+            var dogs = new ObservableCollection<Dog>(_context.Dog.OrderByDescending(x => x.JoinDate).Take(6));
             return dogs;
         }
         // Get all used Colors in table Color for specified dog 

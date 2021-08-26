@@ -91,7 +91,7 @@
         <Button Grid.Row="8" Grid.Column="2" FontSize="16" Click="Button_Click_ResetAdopter" HorizontalAlignment="Right" Margin="60 10 60 10" Padding="10 0 10 0">Reset</Button>
 
 
-        <Button Grid.Row="10" Grid.Column="1" FontSize="16" Click="Button_Click_Create" Margin="50 10 50 10">Zatwierdź</Button>
+        <Button Grid.Row="10" Grid.Column="0" FontSize="16" Click="Button_Click_Create" Margin="50 10 50 10" IsDefault="True">Zatwierdź</Button>
         <Button Grid.Row="10" Grid.Column="2" FontSize="16" Click="Button_Click_Back" Margin="50 10 50 10" IsCancel="True">Powrót</Button>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Adopsiak 1.0" MinHeight="300" MinWidth="700" Height="300" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanResize"> 
+        Title="Adopsiak 1.0" MinHeight="300" MinWidth="700" Height="300" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"> 
     <Grid>
         <!-- Windows definition -->
         <Grid.ColumnDefinitions>
@@ -47,7 +47,7 @@
         </Menu>
 
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 20" FontSize="20" FontWeight="Bold">Adopsiak 1.0</Label>
-        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="85 0 0 15" FontSize="13">Ostatnie 5 nowych psów w schronisku:</Label>
+        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="85 0 0 15" FontSize="13">Ostatnie 6 nowych psów w schronisku:</Label>
         <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13">Liczba dostępnych psów do adopcji:</Label>
         <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13">Liczba dostępnych psów żeńskich:</Label>
         <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13">Liczba dostępnych psów męskich:</Label>
@@ -59,7 +59,7 @@
         <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="13" Name="LabelAllAvailableMenNumber"></Label>
         <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13" Name="LabelAdoptionsInLast30DaysNumber"></Label>
 
-        <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="80 60 15 20" AutoGenerateColumns="False" Name="dgDogs" 
+        <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="80 60 15 15" AutoGenerateColumns="False" Name="dgDogs" 
                   MouseDoubleClick="MouseDoubleClickEvent" AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="0.4*" Header="Imię psa" Binding="{Binding Path=Name}"/>
