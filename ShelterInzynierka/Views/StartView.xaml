@@ -4,25 +4,78 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShelterInzynierka.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Adopsiak 1.0" MinHeight="500" MinWidth="800" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize"> 
+        Title="Adopsiak 1.0" MinHeight="300" MinWidth="700" Height="300" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanResize"> 
     <Grid>
         <!-- Windows definition -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.25*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.8*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+
         </Grid.RowDefinitions>
         <!-- WPF widgets -->
 
-        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20">Psy:</Label>
+        <Menu Margin="3 0 0 0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Click="Menu_Click_Exit"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Psy">
+                <MenuItem Header="_Dodaj nowego psa" Click="Button_Click_Add_Dog"/>
+                <MenuItem Header="_Wyświetl wszystkie psy" Click="Button_Click_View_Dogs"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Osoby">
+                <MenuItem Header="Wprowadź nowego adoptującego" Click="Button_Click_Add_Adopter"/>
+                <MenuItem Header="Wyświetl wszystkich adoptujących" Click="Button_Click_View_Adopters"/>
+                <MenuItem Header="Wprowadź nowego wolontariusza" Click="Button_Click_Add_Volunteer"/>
+                <MenuItem Header="Wyświetl wszystkich wolontariuszy" Click="Button_Click_View_Volunteers"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Adopcje">
+                <MenuItem Header="_Dodaj nową adopcję" Click="Button_Click_Add_Adoption"/>
+                <MenuItem Header="_Wyświetl wszystkie adopcje" Click="Button_Click_View_Adoptions"/>
+            </MenuItem>
+        </Menu>
+
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 20" FontSize="20" FontWeight="Bold">Adopsiak 1.0</Label>
+        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="85 0 0 15" FontSize="13">Ostatnie 5 nowych psów w schronisku:</Label>
+        <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13">Liczba dostępnych psów do adopcji:</Label>
+        <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13">Liczba dostępnych psów żeńskich:</Label>
+        <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13">Liczba dostępnych psów męskich:</Label>
+        <Label Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13">Nowych psów w ostatnich 30 dniach:</Label>
+
+        <!-- Labels for data from DB -->
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="13" Name="LabelAllAvailableDogsNumber"></Label>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="13" VerticalAlignment="Top" Name="LabelAllAvailableWomenNumber"></Label>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="13" Name="LabelAllAvailableMenNumber"></Label>
+        <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13" Name="LabelAdoptionsInLast30DaysNumber"></Label>
+
+        <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="80 60 15 20" AutoGenerateColumns="False" Name="dgDogs" 
+                  MouseDoubleClick="MouseDoubleClickEvent" AlternationCount="2" AlternatingRowBackground="Gray" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.4*" Header="Imię psa" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="0.25*" Header="Płeć" Binding="{Binding Path=Sex}"/>
+                <DataGridTextColumn Width="0.25*" Header="Wiek" 
+                                    Binding="{Binding Path=BornDate, Converter={StaticResource DateToAgeConverterKey}}"/>
+                <DataGridTextColumn Width="0.5*" Header="Data przybycia" Binding="{Binding Path=JoinDate, Converter={StaticResource OnlyYearMonthDayKey}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--
+        <xctk:Pie Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10 0 10 0" ></xctk:Pie>
+        -->
+        
+        
+        <!--
+         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20">Psy:</Label>
         <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" FontWeight="Bold">Adopsiak 1.0</Label>
         <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20">Osoby:</Label>
         <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20">Adopcje:</Label>
@@ -38,6 +91,9 @@
 
         <Button Grid.Column="2" Grid.Row="1" Margin="20" FontSize="12" Click="Button_Click_Add_Adoption">Dodaj nową adopcję</Button>
         <Button Grid.Column="2" Grid.Row="2" Margin="20" FontSize="12" Click="Button_Click_View_Adoptions">Wyświetl wszystkie adopcje</Button>
+        
+        -->
+
     </Grid>
 
 </Window>

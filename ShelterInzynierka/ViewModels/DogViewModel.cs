@@ -28,6 +28,31 @@ namespace ShelterInzynierka.ViewModels
             var dogs = new ObservableCollection<Dog>(_context.Dog.Where(x => x.LeaveDate == DateTime.MinValue));
             return dogs;
         }
+        // Get free men dogs to Adopt
+        public ObservableCollection<Dog> GetMenDogsWithoutLeaveDate ()
+        {
+            var dogs = new ObservableCollection<Dog>(_context.Dog.Where(x => x.LeaveDate == DateTime.MinValue).Where(x => x.Sex == "M"));
+            return dogs;
+        }
+        // Get free women dogs to Adopt
+        public ObservableCollection<Dog> GetWomenDogsWithoutLeaveDate()
+        {
+            var dogs = new ObservableCollection<Dog>(_context.Dog.Where(x => x.LeaveDate == DateTime.MinValue).Where(x => x.Sex == "K"));
+            return dogs;
+        }
+        // Get Dogs from 30 days in the shelter
+        public ObservableCollection<Dog> GetDogsFromThirtyDaysInShelter()
+        {
+            var pastDate = DateTime.Now.AddDays(-30);
+            var dogs = new ObservableCollection<Dog>(_context.Dog.Where(x=> x.JoinDate > pastDate));
+            return dogs;
+        }
+        // Get newest 5 dogs in the shelter
+        public ObservableCollection<Dog> GetFiveLastDogsInShelter()
+        {
+            var dogs = new ObservableCollection<Dog>(_context.Dog.OrderByDescending(x => x.JoinDate).Take(5));
+            return dogs;
+        }
         // Get all used Colors in table Color for specified dog 
         public IList<Models.DB.Color> GetColors(Dog dog)
         {

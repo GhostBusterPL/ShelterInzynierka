@@ -1,4 +1,5 @@
 ﻿
+using ShelterInzynierka.Models.DB;
 using ShelterInzynierka.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace ShelterInzynierka.Views
     public partial class StartView : Window
     {
         private StartViewModel startViewModel = new StartViewModel();
+        private DogViewModel dogViewModel = new DogViewModel();
         public StartView()
         {
             if (startViewModel.CheckConnection() == false)
@@ -30,6 +32,13 @@ namespace ShelterInzynierka.Views
             }
             else {
                 InitializeComponent();
+
+                // Set information to dashboard's controls
+                LabelAllAvailableDogsNumber.Content = dogViewModel.GetDogsWithoutLeaveDate().Count.ToString();
+                LabelAllAvailableMenNumber.Content = dogViewModel.GetMenDogsWithoutLeaveDate().Count.ToString();
+                LabelAllAvailableWomenNumber.Content = dogViewModel.GetWomenDogsWithoutLeaveDate().Count.ToString();
+                LabelAdoptionsInLast30DaysNumber.Content = dogViewModel.GetDogsFromThirtyDaysInShelter().Count.ToString();
+                dgDogs.ItemsSource = dogViewModel.GetFiveLastDogsInShelter();
             }
         }
 
@@ -89,5 +98,15 @@ namespace ShelterInzynierka.Views
             newWindow.Show();
             Close();
         }
+        private void MouseDoubleClickEvent(object sender, MouseButtonEventArgs e)
+        {
+            var newWindow = new DogDetails((Dog)dgDogs.SelectedItem);
+            newWindow.Show();
+        }
+        private void Menu_Click_Exit (object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
     }
 }
